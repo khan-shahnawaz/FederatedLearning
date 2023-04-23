@@ -7,11 +7,11 @@ python3  -u main.py --dataset=$1 \
             --batch_size=$4 \
             --q=0 \
 	      --seed=0 \
-            --model='cnn' \
+            --model=$5 \
 	      --sampling=2  \
-            --num_corrupted=$5 \
-            --boosting=$6 \
-            --random_updates=$7 \
+            --num_corrupted=$6 \
+            --boosting=$7 \
+            --random_updates=$8 \
             --gradient_clipping=0 \
             --krum=0 \
             --mkrum=0 \
@@ -27,4 +27,4 @@ python3  -u main.py --dataset=$1 \
             --finetune_iters=40 \
             --decay_factor=1 \
             --local_iters=2 \
-		> $8
+		> $9
