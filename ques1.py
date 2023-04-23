@@ -28,7 +28,7 @@ for optimiser in optimisers:
     for dataset,num_clients in zip(datasets, num_clients):
         for adversary in adverseries:
             for ratio in currupt_ratio:
-                filename = os.path.join(RESULTS_DIR, 'results') + dataset + '_' + optimiser + '_' + str(adversary) + '_' + str(ratio) + '.txt'
+                filename = os.path.join(RESULTS_DIR, 'results/') + dataset + '_' + optimiser + '_' + str(adversary) + '_' + str(ratio) + '.txt'
                 num_currupted = int(num_clients * ratio)
                 A = [0,0,0]
                 A[adversary-1] = 1
