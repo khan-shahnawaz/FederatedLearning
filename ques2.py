@@ -3,7 +3,7 @@
 '''
 
 import os
-RESULTS_DIR = 'Ques1/'
+RESULTS_DIR = 'Ques2/'
 def ensure_permission(filename):
     ''' Gives permission to filename for execution '''
     os.system('chmod +x ' + filename)
@@ -25,9 +25,9 @@ ensure_permission('./run.sh')
 #./run.sh <dataset> <optimiser> <num_rounds> <batch_size> <model> <num_corrupted> <A3> <A2> <filename> <lambda>
 
 ''' Results for figure 2 and table 1'''
-optimiser = 'ditto'
-lambdas = [100,1, 0]
-lambdas_names = ['global', 'ditto', 'local']
+optimiser = 'fedavgper'
+lambdas = [0]
+lambdas_names = ['fedavgper']
 datasets = ['femnist', 'fmnist']
 num_clients = [205, 500]
 adverseries = [1,2,3]
@@ -62,9 +62,9 @@ for lam, lambda_name in zip(lambdas, lambdas_names):
 
 #Executing global, local, ditto on celeba
 
-optimiser = 'ditto'
-lambdas = [100,1, 0]
-lambdas_names = ['global', 'ditto', 'local']
+optimiser = 'fedavgper'
+lambdas = [0]
+lambdas_names = ['fedavgper']
 datasets = ['celeba']
 num_clients = [515]
 adverseries = [1]
@@ -96,39 +96,4 @@ for lam, lambda_name in zip(lambdas, lambdas_names):
                 print(' '.join(map(str, params)))
                 # Terminate the main process if os.system returns non-zero exit code
                 execute(filename, params)
-                
-#Executing l2sgd on celeba and femnist
-optimiser = 'l2sgd'
-lambdas = [0]
-lambdas_names = ['l2sgd']
-datasets = ['celeba','femnist']
-num_clients = [515, 205]
-adverseries = [1]
-currupt_ratio = [0, 0.5]
-num_rounds = 1000
-batch_size = 32
-model='cnn'
-
-for lam, lambda_name in zip(lambdas, lambdas_names):
-    for dataset,num_client in zip(datasets, num_clients):
-        for adversary in adverseries:
-            for ratio in currupt_ratio:
-                filename = os.path.join(RESULTS_DIR, 'results/') + lambda_name + '_' + dataset + '_' + str(adversary) + '_' + str(ratio) + '.txt'
-                num_currupted = int(num_client * ratio)
-                A = [0,0,0]
-                A[adversary-1] = 1
-                params = [
-                    dataset,
-                    optimiser,
-                    num_rounds,
-                    batch_size,
-                    model,
-                    num_currupted,
-                    A[2],
-                    A[1],
-                    filename,
-                    lam,
-                ]
-                print(' '.join(map(str, params)))
-                # Terminate the main process if os.system returns non-zero exit code
-                execute(filename, params)
+ 

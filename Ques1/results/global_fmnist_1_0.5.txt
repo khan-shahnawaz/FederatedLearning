@@ -1,0 +1,178 @@
+Arguments:
+	              alpha : 0.0
+	         batch_size : 32
+	           boosting : 0
+	  clients_per_round : 10
+	          comm_freq : 0.1
+	data_partition_seed : 0
+	            dataset : fmnist
+	       decay_factor : 1.0
+	        dynamic_lam : 0
+	         eval_every : 10
+	            fedmgda : 0
+	        fedmgda_eps : 0.0
+	     finetune_iters : 40
+	         global_reg : -1.0
+	  gradient_clipping : 0
+	             k_loss : 0
+	             k_norm : 0
+	               krum : 0
+	                lam : 100.0
+	       lambda_l2sgd : 0
+	      learning_rate : 0.1
+	        local_iters : 2
+	             median : 0
+	              mkrum : 0
+	              model : cnn
+	       model_params : (10,)
+	      num_corrupted : 250
+	         num_epochs : 1
+	         num_rounds : 1000
+	          optimizer : ditto
+	                  q : 0.0
+	     random_updates : 0
+	           sampling : 2
+	               seed : 0
+Using global-regularized multi-task learning to Train
+Parsing Inputs...
+
+=========================Options=============================
+-max_depth                  10000
+-min_bytes                  0
+-min_peak_bytes             0
+-min_residual_bytes         0
+-min_output_bytes           0
+-min_micros                 0
+-min_accelerator_micros     0
+-min_cpu_micros             0
+-min_params                 0
+-min_float_ops              1
+-min_occurrence             0
+-step                       -1
+-order_by                   float_ops
+-account_type_regexes       .*
+-start_name_regexes         .*
+-trim_name_regexes          
+-show_name_regexes          .*
+-hide_name_regexes          
+-account_displayed_op_only  true
+-select                     float_ops
+-output                     stdout:
+
+==================Model Analysis Report======================
+
+Doc:
+scope: The nodes in the model graph are organized by their names, which is hierarchical like filesystem.
+flops: Number of float operations. Note: Please read the implementation for the math behind it.
+
+Profile:
+node name | # float_ops
+_TFProfRoot (--/6.55m flops)
+  dense/kernel/Initializer/random_uniform (3.21m/6.42m flops)
+    dense/kernel/Initializer/random_uniform/mul (3.21m/3.21m flops)
+    dense/kernel/Initializer/random_uniform/sub (1/1 flops)
+  conv2d_1/kernel/Initializer/random_uniform (51.20k/102.40k flops)
+    conv2d_1/kernel/Initializer/random_uniform/mul (51.20k/51.20k flops)
+    conv2d_1/kernel/Initializer/random_uniform/sub (1/1 flops)
+  dense_1/kernel/Initializer/random_uniform (10.24k/20.48k flops)
+    dense_1/kernel/Initializer/random_uniform/mul (10.24k/10.24k flops)
+    dense_1/kernel/Initializer/random_uniform/sub (1/1 flops)
+  conv2d/kernel/Initializer/random_uniform (800/1.60k flops)
+    conv2d/kernel/Initializer/random_uniform/mul (800/800 flops)
+    conv2d/kernel/Initializer/random_uniform/sub (1/1 flops)
+  gradients_1/Sum_1_grad/Maximum (2/2 flops)
+  gradients_1/Sum_grad/Maximum (2/2 flops)
+  sparse_softmax_cross_entropy_loss/num_present/Equal (1/1 flops)
+  sparse_softmax_cross_entropy_loss/div (1/1 flops)
+  sparse_softmax_cross_entropy_loss/Greater (1/1 flops)
+  sparse_softmax_cross_entropy_loss/Equal (1/1 flops)
+  gradients_1/Sum_grad/add (1/1 flops)
+  gradients_1/Sum_1_grad/add (1/1 flops)
+  gradients/sparse_softmax_cross_entropy_loss/div_grad/mul (1/1 flops)
+  gradients/sparse_softmax_cross_entropy_loss/div_grad/RealDiv_2 (1/1 flops)
+  gradients/sparse_softmax_cross_entropy_loss/div_grad/RealDiv_1 (1/1 flops)
+  gradients/sparse_softmax_cross_entropy_loss/div_grad/RealDiv (1/1 flops)
+  gradients/sparse_softmax_cross_entropy_loss/div_grad/Neg (1/1 flops)
+
+======================End of Report==========================
+500 Clients in Total
+---10 workers per communication round---
+[394 276 255 318 369 457 458  75  62 113 266 365 300 268 250 389 267   9
+ 378 112 433 436 254 440  57 232 396  19 181  29 398  94 228 265 249  68
+ 244 163  99 464 468 216 156 449 135  82 284 296 118 331 353 357 351 328
+  14  91 311  35 476 167 136 363 119 213 346 205 307 207  43 362 230 337
+ 417  64 274 122  54  38 321 489 390 409 152 234  98  20 483 187 339 243
+ 428 208 303 221 299 427  55 329 271 402 320 170 165 178  17 404 106 438
+   5 200 214 183 235  73 292 416 301 211 453 494 488 345 264  63 354 322
+ 225 157 277 309  23  22 335  16  44 371 499 233 151 355 180 154 162 442
+ 444 217  69 141 475 189  87 490  95 204 340  27 281 297 374 308 148  21
+ 386 176 344 100 446  65 231 137 238 131  67 290 429  49 443 251  92 146
+  34 498 134 253 376 120 388 242 349 432 392 456   8  47 272 413 226  77
+ 410   7 358  15 342 405 202 343 160   3  60  31 247  74 177 169 481 192
+ 372 223  33  13 139 222  28 287 144  51 285  59 198 495 260 257 179 470
+ 425  90 164 484 347 282  78 304 469  56 132 129 193 195 280 452]
+At round 10 training accu: 0.0971249448988588, loss: nan
+At round 10 test accu: 0.0903678692020615
+At round 10 malicious test accu: 0.08294181423924828
+At round 10 benign test accu: 0.09755244755244755
+variance of the performance:  0.013960266957255397
+At round 20 training accu: 0.10466767889503845, loss: nan
+At round 20 test accu: 0.09481073396125822
+At round 20 malicious test accu: 0.08077340079508492
+At round 20 benign test accu: 0.10839160839160839
+variance of the performance:  0.015403244097938347
+At round 30 training accu: 0.10220241302182821, loss: nan
+At round 30 test accu: 0.09418873289497068
+At round 30 malicious test accu: 0.08348391760028913
+At round 30 benign test accu: 0.10454545454545454
+variance of the performance:  0.014278018609290732
+At round 40 training accu: 0.1135328402801587, loss: nan
+At round 40 test accu: 0.10431846454593922
+At round 40 malicious test accu: 0.0849295265630647
+At round 40 benign test accu: 0.12307692307692308
+variance of the performance:  0.018204257323064552
+At round 50 training accu: 0.11327162005518278, loss: nan
+At round 50 test accu: 0.1024524613470766
+At round 50 malicious test accu: 0.08203830863751355
+At round 50 benign test accu: 0.1222027972027972
+variance of the performance:  0.018505050283802112
+At round 60 training accu: 0.11789195278444434, loss: nan
+At round 60 test accu: 0.10769504176292874
+At round 60 malicious test accu: 0.08312251535959522
+At round 60 benign test accu: 0.13146853146853146
+variance of the performance:  0.01951067708993273
+At round 70 training accu: 0.12101026922009436, loss: nan
+At round 70 test accu: 0.1116936200462058
+At round 70 malicious test accu: 0.08565233104445248
+At round 70 benign test accu: 0.1368881118881119
+variance of the performance:  0.020763181004862782
+At round 80 training accu: 0.11637361022677181, loss: nan
+At round 80 test accu: 0.11036076061844677
+At round 80 malicious test accu: 0.09071196241416697
+At round 80 benign test accu: 0.12937062937062938
+variance of the performance:  0.02009975249810467
+At round 90 training accu: 0.1192960114936899, loss: nan
+At round 90 test accu: 0.11267105029322907
+At round 90 malicious test accu: 0.08854354897000362
+At round 90 benign test accu: 0.136013986013986
+variance of the performance:  0.021582740173704783
+At round 100 training accu: 0.11772869014383439, loss: nan
+At round 100 test accu: 0.11009418873289498
+At round 100 malicious test accu: 0.08673653776653416
+At round 100 benign test accu: 0.1326923076923077
+variance of the performance:  0.02158239646116307
+At round 110 training accu: 0.1212388369169483, loss: nan
+At round 110 test accu: 0.11116047627510219
+At round 110 malicious test accu: 0.08348391760028913
+At round 110 benign test accu: 0.13793706293706293
+variance of the performance:  0.024281270636144547
+At round 120 training accu: 0.11878989730779906, loss: nan
+At round 120 test accu: 0.10858361471476809
+At round 120 malicious test accu: 0.08330321647994217
+At round 120 benign test accu: 0.13304195804195804
+variance of the performance:  0.023906513433286997
+At round 130 training accu: 0.11983477820770273, loss: nan
+At round 130 test accu: 0.10973875955215923
+At round 130 malicious test accu: 0.08348391760028913
+At round 130 benign test accu: 0.13513986013986015
+variance of the performance:  0.023581828464487913
