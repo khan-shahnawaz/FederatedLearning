@@ -4,6 +4,7 @@ import importlib
 import random
 import os
 import tensorflow as tf
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 from flearn.utils.model_utils import read_data
 
 # GLOBAL PARAMETERS
@@ -174,7 +175,7 @@ def read_options():
     learner = getattr(mod, 'Model')
 
     # load selected trainer
-    if parsed['optimizer'] in ['l2sgd', 'ditto', 'apfl', 'mapper', 'ewc', 'meta', 'kl', 'fedavgper']:
+    if parsed['optimizer'] in ['l2sgd', 'ditto', 'apfl', 'mapper', 'ewc', 'meta', 'kl']:
         opt_path = 'flearn.trainers_MTL.%s' % parsed['optimizer']
     else:
         opt_path = 'flearn.trainers_global.%s' % parsed['optimizer']
@@ -197,7 +198,6 @@ def read_options():
 def main():
     # suppress tf warnings
     tf.logging.set_verbosity(tf.logging.WARN)
-    
     # parse command line arguments
     options, learner, optimizer = read_options()
 

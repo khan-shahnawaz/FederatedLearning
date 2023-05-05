@@ -599,3 +599,13 @@ At round 980 test accu: 0.029020362353695688
 At round 980 malicious test accu: 0.015163607342378291
 At round 980 benign test accu: 0.08571428571428572
 variance of the performance:  0.0026892345170832738
+At round 990 training accu: 0.06467783347597506, loss: 3.809587360200883
+At round 990 test accu: 0.031425364758698095
+At round 990 malicious test accu: 0.01636073423782921
+At round 990 benign test accu: 0.09306122448979592
+variance of the performance:  0.0028816467220593293
+At round 1000 training accu: 0.06427028569099727, loss: 3.80828070864048
+At round 1000 test accu: 0.029822029822029823
+At round 1000 malicious test accu: 0.013168395849960097
+At round 1000 benign test accu: 0.09795918367346938
+variance of the performance:  0.0037927635520059104

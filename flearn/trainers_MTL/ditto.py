@@ -167,4 +167,3 @@ class Server(BaseFedarated):
             # update the global model
             for layer in range(len(avg_updates)):
                 self.global_model[layer] += avg_updates[layer]
-
