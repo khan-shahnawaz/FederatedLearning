@@ -154,7 +154,6 @@ def read_data(train_data_dir, test_data_dir):
     groups = []
     train_data = {}
     test_data = {}
-
     train_files = os.listdir(train_data_dir)
     train_files = [f for f in train_files if f.endswith('.json')]
     for f in train_files:
@@ -176,6 +175,7 @@ def read_data(train_data_dir, test_data_dir):
         test_data.update(cdata['user_data'])
 
     clients = list(sorted(train_data.keys()))
+    print(clients,"clients printed here")
 
     return clients, groups, train_data, test_data
 

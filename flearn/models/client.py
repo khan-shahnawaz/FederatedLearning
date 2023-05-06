@@ -101,7 +101,38 @@ class Client(object):
         '''
         tot_correct, loss = self.model.test(self.test_data)
         return tot_correct, loss, self.test_samples
-
+    
+    def test_on_positive_male(self):
+        '''tests current model on positive examples only in local eval_data to get TPR
+        
+        Return:
+            tot_correct: total
+            test_samples: int
+        '''
+        pos_test_data = {'x': [], 'y': []}
+        for i in range(len(self.test_data['y'])):
+            if self.test_data['y'][i][0] == 1 and self.test_data['x'][i][3] == 0:
+                pos_test_data['x'].append(self.test_data['x'][i])
+                pos_test_data['y'].append(self.test_data['y'][i])
+        
+        tot_correct, loss = self.model.test(pos_test_data)
+        return tot_correct, loss, len(pos_test_data['y'])
+    
+    def test_on_positive_female(self):
+        '''tests current model on positive examples only in local eval_data to get TPR
+        
+        Return:
+            tot_correct: total
+            test_samples: int
+        '''
+        pos_test_data = {'x': [], 'y': []}
+        for i in range(len(self.test_data['y'])):
+            if self.test_data['y'][i][0] == 1 and self.test_data['x'][i][3] == 1:
+                pos_test_data['x'].append(self.test_data['x'][i])
+                pos_test_data['y'].append(self.test_data['y'][i])
+        tot_correct, loss = self.model.test(pos_test_data)
+        return tot_correct, loss, len(pos_test_data['y'])
+        
     def validate(self):
         tot_correct, loss = self.model.test(self.val_data)
         return tot_correct, self.val_samples

@@ -31,16 +31,16 @@ class Model(object):
 
     def create_model(self, q, optimizer):
         """Model function for Logistic Regression."""
-        features = tf.placeholder(tf.float32, shape=[None, 63], name='features')
-        labels = tf.placeholder(tf.float32, shape=[None, 1], name='labels')
+        features = tf.placeholder(tf.float32, shape=[None, 62], name='features')
+        labels = tf.placeholder(tf.float32, shape=[None,1], name='labels')
         
-        W = tf.Variable(tf.zeros([63, 1]))
+        W = tf.Variable(tf.zeros([62, 1]))
         b = tf.Variable(tf.zeros([1]))
         y_pred = tf.matmul(features, W) + b
         
         #Give weight of 2 to female and 1 to male as the ratio of female is 1 for 2 men. 0 denotes men and 1 denotes female
         loss = 0.01 * tf.reduce_sum(tf.square(W)) + tf.reduce_mean(
-            tf.maximum(tf.zeros_like(labels), 1 - labels * y_pred)*(tf.ones_like(labels) + labels))
+            tf.maximum(tf.zeros_like(labels), 1 - labels * y_pred)*(tf.ones_like(labels) + features[:, 3]))
 
         grads_and_vars = optimizer.compute_gradients(loss)
         grads, _ = zip(*grads_and_vars)
@@ -64,7 +64,7 @@ class Model(object):
 
         grads = np.zeros(model_len)
         num_samples = len(data['y'])
-
+        
         with self.graph.as_default():
             model_grads = self.sess.run(self.grads,
                 feed_dict={self.features: data['x'], self.labels: data['y']})
@@ -101,6 +101,8 @@ class Model(object):
         Args:
             data: dict of the form {'x': [list], 'y': [list]}
         '''
+        if len(data['y']) == 0: # if the client does not have any data
+            return 0, 0
         with self.graph.as_default():
             tot_correct, loss = self.sess.run([self.eval_metric_ops, self.loss], 
                 feed_dict={self.features: data['x'], self.labels: data['y']})

@@ -42,7 +42,8 @@ def read_data(train_data_dir, test_data_dir):
     groups = []
     train_data = {}
     test_data = {}
-
+    print("Arrived")
+    
     train_files = os.listdir(train_data_dir)
     train_files = [f for f in train_files if f.endswith('.json')]
     for f in train_files:
@@ -63,7 +64,6 @@ def read_data(train_data_dir, test_data_dir):
         test_data.update(cdata['user_data'])
 
     clients = list(train_data.keys())
-
     return clients, groups, train_data, test_data
 
 def setup_clients(train_data_dir, test_data_dir, model=None):

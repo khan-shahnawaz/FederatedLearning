@@ -40,14 +40,24 @@ test_df.replace(' ?', np.nan, inplace=True)
 train_df.dropna(inplace=True)
 test_df.dropna(inplace=True)
 countries = train_df['native-country'].unique()
-#Ignore those clients which do not have test data
+#Remove those countries which do not have occurance in test_df
+countries = [country for country in countries if country in test_df['native-country'].unique()]
+
+train_df = train_df[train_df['native-country'].isin(countries)]
 test_df = test_df[test_df['native-country'].isin(countries)]
+
 
 # Convert the categorial data into numerical data
 train_df['income'] = train_df['income'].apply(lambda x: 0 if x == ' <=50K' else 1)
 train_df['income']=train_df['income'].astype('category')
 test_df['income'] = test_df['income'].apply(lambda x: 0 if x == ' <=50K.' else 1)
 test_df['income']=test_df['income'].astype('category')
+#Print number of positive and negative examples in train and test data
+print('Number of positive examples in train data: {}'.format(len(train_df[train_df['income'] == 1])))
+print('Number of negative examples in train data: {}'.format(len(train_df[train_df['income'] == 0])))
+print('Number of positive examples in test data: {}'.format(len(test_df[test_df['income'] == 1])))
+print('Number of negative examples in test data: {}'.format(len(test_df[test_df['income'] == 0])))
+
 int_to_country = {i: country for i, country in enumerate(countries)}
 #Apply the same categorial encoding to both train and test data
 for col in train_df.columns:
@@ -75,11 +85,10 @@ for country in train_df['native-country'].unique():
     data_to_dump['users'].append(country_name)
     data_to_dump['user_data'][country] = {'x': [], 'y': []}
     data_to_dump['user_data'][country]['x'] = tdf.drop(['income'], axis=1).to_numpy(np.float32).tolist()
-    data_to_dump['user_data'][country]['y'] = tdf['income'].to_numpy(np.float32).tolist()
+    data_to_dump['user_data'][country]['y'] = tdf['income'].to_numpy(np.float32)[:,None].tolist()
 
 #Print the index of sex column
 index = {column: index for index, column in enumerate(train_df.columns)}
-
 with open(train_folder + '/mytrain.json', 'w') as outfile:
     json.dump(data_to_dump, outfile)
 #Repeat the same process for test data
@@ -92,7 +101,9 @@ for country in test_df['native-country'].unique():
     data_to_dump['users'].append(country_name)
     data_to_dump['user_data'][country] = {'x': [], 'y': []}
     data_to_dump['user_data'][country]['x'] = tdf.drop(['income'], axis=1).to_numpy(np.float32).tolist()
-    data_to_dump['user_data'][country]['y'] = tdf['income'].to_numpy(np.float32).tolist()
+    data_to_dump['user_data'][country]['y'] = tdf['income'].to_numpy(np.float32)[:,None].tolist()
 with open(test_folder + '/mytest.json', 'w') as outfile:
     json.dump(data_to_dump, outfile)
+
+
 print('Done!')

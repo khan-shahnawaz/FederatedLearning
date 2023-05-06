@@ -73,7 +73,36 @@ class BaseFedarated(object):
             num_samples.append(ns)
             losses.append(cl * 1.0)
         return np.array(num_samples), np.array(tot_correct), np.array(losses)
-
+    def test_on_positive_male(self, models):
+        '''tests self.latest_model on given clients with only positive examples
+        '''
+        num_samples = []
+        tot_correct = []
+        losses = []
+        
+        for idx, c in enumerate(self.clients):
+            self.client_model.set_params(models[idx])
+            ct, cl, ns = c.test_on_positive_male()
+            tot_correct.append(ct * 1.0)
+            num_samples.append(ns)
+            losses.append(cl * 1.0)
+        return np.array(num_samples), np.array(tot_correct), np.array(losses)
+    
+    def test_on_positive_female(self, models):
+        '''tests self.latest_model on given clients with only positive examples
+        '''
+        num_samples = []
+        tot_correct = []
+        losses = []
+        
+        for idx, c in enumerate(self.clients):
+            self.client_model.set_params(models[idx])
+            ct, cl, ns = c.test_on_positive_female()
+            tot_correct.append(ct * 1.0)
+            num_samples.append(ns)
+            losses.append(cl * 1.0)
+        return np.array(num_samples), np.array(tot_correct), np.array(losses)
+    
     def validate(self):
         '''tests self.latest_model on given clients
         '''

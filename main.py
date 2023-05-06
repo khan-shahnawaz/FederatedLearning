@@ -18,6 +18,7 @@ MODEL_PARAMS = {
     'femnist.cnn': (62, ), # num_classes
     'vehicle.svm': (2, ), # num_classes
     'celeba.cnn': (2,), # num_classes
+    'adult.svm': (2,), # num_classes
 }
 
 
@@ -205,7 +206,6 @@ def main():
     train_path = os.path.join('data', options['dataset'], 'data', 'train')
     test_path = os.path.join('data', options['dataset'], 'data', 'test')
     dataset = read_data(train_path, test_path)
-
     # call appropriate trainer
     t = optimizer(options, learner, dataset)
     t.train()
