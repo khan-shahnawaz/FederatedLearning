@@ -1,0 +1,717 @@
+Arguments:
+	              alpha : 0.0
+	         batch_size : 32
+	           boosting : 0
+	  clients_per_round : 10
+	          comm_freq : 0.1
+	data_partition_seed : 0
+	            dataset : fmnist
+	       decay_factor : 1.0
+	        dynamic_lam : 0
+	         eval_every : 10
+	            fedmgda : 0
+	        fedmgda_eps : 0.0
+	     finetune_iters : 40
+	         global_reg : -1.0
+	  gradient_clipping : 0
+	             k_loss : 0
+	             k_norm : 0
+	               krum : 0
+	                lam : 0.0
+	       lambda_l2sgd : 0
+	      learning_rate : 0.1
+	        local_iters : 2
+	             median : 0
+	              mkrum : 0
+	              model : cnn
+	       model_params : (10,)
+	      num_corrupted : 100
+	         num_epochs : 1
+	         num_rounds : 1000
+	          optimizer : fedavgper
+	                  q : 0.0
+	     random_updates : 1
+	           sampling : 2
+	               seed : 0
+Using fedavgper to Train
+Parsing Inputs...
+
+=========================Options=============================
+-max_depth                  10000
+-min_bytes                  0
+-min_peak_bytes             0
+-min_residual_bytes         0
+-min_output_bytes           0
+-min_micros                 0
+-min_accelerator_micros     0
+-min_cpu_micros             0
+-min_params                 0
+-min_float_ops              1
+-min_occurrence             0
+-step                       -1
+-order_by                   float_ops
+-account_type_regexes       .*
+-start_name_regexes         .*
+-trim_name_regexes          
+-show_name_regexes          .*
+-hide_name_regexes          
+-account_displayed_op_only  true
+-select                     float_ops
+-output                     stdout:
+
+==================Model Analysis Report======================
+
+Doc:
+scope: The nodes in the model graph are organized by their names, which is hierarchical like filesystem.
+flops: Number of float operations. Note: Please read the implementation for the math behind it.
+
+Profile:
+node name | # float_ops
+_TFProfRoot (--/6.55m flops)
+  dense/kernel/Initializer/random_uniform (3.21m/6.42m flops)
+    dense/kernel/Initializer/random_uniform/mul (3.21m/3.21m flops)
+    dense/kernel/Initializer/random_uniform/sub (1/1 flops)
+  conv2d_1/kernel/Initializer/random_uniform (51.20k/102.40k flops)
+    conv2d_1/kernel/Initializer/random_uniform/mul (51.20k/51.20k flops)
+    conv2d_1/kernel/Initializer/random_uniform/sub (1/1 flops)
+  dense_1/kernel/Initializer/random_uniform (10.24k/20.48k flops)
+    dense_1/kernel/Initializer/random_uniform/mul (10.24k/10.24k flops)
+    dense_1/kernel/Initializer/random_uniform/sub (1/1 flops)
+  conv2d/kernel/Initializer/random_uniform (800/1.60k flops)
+    conv2d/kernel/Initializer/random_uniform/mul (800/800 flops)
+    conv2d/kernel/Initializer/random_uniform/sub (1/1 flops)
+  gradients_1/Sum_1_grad/Maximum (2/2 flops)
+  gradients_1/Sum_grad/Maximum (2/2 flops)
+  sparse_softmax_cross_entropy_loss/num_present/Equal (1/1 flops)
+  sparse_softmax_cross_entropy_loss/div (1/1 flops)
+  sparse_softmax_cross_entropy_loss/Greater (1/1 flops)
+  sparse_softmax_cross_entropy_loss/Equal (1/1 flops)
+  gradients_1/Sum_grad/add (1/1 flops)
+  gradients_1/Sum_1_grad/add (1/1 flops)
+  gradients/sparse_softmax_cross_entropy_loss/div_grad/mul (1/1 flops)
+  gradients/sparse_softmax_cross_entropy_loss/div_grad/RealDiv_2 (1/1 flops)
+  gradients/sparse_softmax_cross_entropy_loss/div_grad/RealDiv_1 (1/1 flops)
+  gradients/sparse_softmax_cross_entropy_loss/div_grad/RealDiv (1/1 flops)
+  gradients/sparse_softmax_cross_entropy_loss/div_grad/Neg (1/1 flops)
+
+======================End of Report==========================
+500 Clients in Total
+Training with 10 workers ---
+[394 276 255 318 369 457 458  75  62 113 266 365 300 268 250 389 267   9
+ 378 112 433 436 254 440  57 232 396  19 181  29 398  94 228 265 249  68
+ 244 163  99 464 468 216 156 449 135  82 284 296 118 331 353 357 351 328
+  14  91 311  35 476 167 136 363 119 213 346 205 307 207  43 362 230 337
+ 417  64 274 122  54  38 321 489 390 409 152 234  98  20 483 187 339 243
+ 428 208 303 221 299 427  55 329 271 402]
+At round 0 training accu: 0.07795791089125076, loss: 2.3274148796800125
+At round 0 test loss: 2.3316580274716476
+At round 0 test accu: 0.07410698418340146
+At round 0 malicious test accu: 0.08055805580558056
+At round 0 benign test accu: 0.07251992914083259
+At round 0 variance: 0.008684813545859699
+At round 10 training accu: 0.5620806190919332, loss: 1.5088352852548976
+At round 10 test loss: 0.9920854977409349
+At round 10 test accu: 0.6788697352052604
+At round 10 malicious test accu: 0.7038703870387039
+At round 10 benign test accu: 0.6727192205491586
+At round 10 variance: 0.02575266887972564
+At round 20 training accu: 0.5942596855561542, loss: 1.5172097055104834
+At round 20 test loss: 0.7968918628499417
+At round 20 test accu: 0.7131686511462592
+At round 20 malicious test accu: 0.72997299729973
+At round 20 benign test accu: 0.7090345438441098
+At round 20 variance: 0.019657814110911144
+At round 30 training accu: 0.5854924817553999, loss: 1.5584034332294714
+At round 30 test loss: 0.7974609909299447
+At round 30 test accu: 0.7069486404833837
+At round 30 malicious test accu: 0.7412241224122412
+At round 30 benign test accu: 0.6985163861824624
+At round 30 variance: 0.02722286747508995
+At round 40 training accu: 0.6418344190298934, loss: 1.4925273289623222
+At round 40 test loss: 0.6355105333218243
+At round 40 test accu: 0.771636751377288
+At round 40 malicious test accu: 0.7898289828982898
+At round 40 benign test accu: 0.7671612046058459
+At round 40 variance: 0.019762678423638512
+At round 50 training accu: 0.6425037958563942, loss: 1.6462769721606725
+At round 50 test loss: 0.6005267631808723
+At round 50 test accu: 0.7729696108050471
+At round 50 malicious test accu: 0.7965796579657966
+At round 50 benign test accu: 0.7671612046058459
+At round 50 variance: 0.02128984523654783
+At round 60 training accu: 0.6587647548611452, loss: 1.6027720971676302
+At round 60 test loss: 0.5846679175220614
+At round 60 test accu: 0.7923405011551449
+At round 60 malicious test accu: 0.8123312331233123
+At round 60 benign test accu: 0.787422497785651
+At round 60 variance: 0.01660654563445613
+At round 70 training accu: 0.6619647026171002, loss: 1.4840335938509335
+At round 70 test loss: 0.5704379955567161
+At round 70 test accu: 0.7950950773058468
+At round 70 malicious test accu: 0.8073807380738074
+At round 70 benign test accu: 0.79207263064659
+At round 70 variance: 0.020336848471402543
+At round 80 training accu: 0.6580953780346444, loss: 1.7295238155846633
+At round 80 test loss: 0.5467379922472617
+At round 80 test accu: 0.7904744979562822
+At round 80 malicious test accu: 0.8163816381638164
+At round 80 benign test accu: 0.7841009743135519
+At round 80 variance: 0.021842426641177227
+At round 90 training accu: 0.6721196388630389, loss: 1.7037547594293185
+At round 90 test loss: 0.5028250741944318
+At round 90 test accu: 0.8102008174871157
+At round 90 malicious test accu: 0.8249324932493249
+At round 90 benign test accu: 0.8065766164747564
+At round 90 variance: 0.01662729253139675
+At round 100 training accu: 0.6637442653997486, loss: 1.7655356519705288
+At round 100 test loss: 0.537700874289696
+At round 100 test accu: 0.8019370890350098
+At round 100 malicious test accu: 0.819081908190819
+At round 100 benign test accu: 0.7977192205491586
+At round 100 variance: 0.019631968855788943
+At round 110 training accu: 0.6802990971575974, loss: 1.6864821669066736
+At round 110 test loss: 0.49403080604315036
+At round 110 test accu: 0.8153545406077839
+At round 110 malicious test accu: 0.8267326732673267
+At round 110 benign test accu: 0.812555358724535
+At round 110 variance: 0.013318205011424658
+At round 120 training accu: 0.6667809505150937, loss: 1.6591166343835964
+At round 120 test loss: 0.5107135613822473
+At round 120 test accu: 0.8000710858361472
+At round 120 malicious test accu: 0.828082808280828
+At round 120 benign test accu: 0.7931798051372896
+At round 120 variance: 0.02194275006524971
+At round 130 training accu: 0.6952213025093468, loss: 1.7472166491257939
+At round 130 test loss: 0.45640680504297787
+At round 130 test accu: 0.8360582903856406
+At round 130 malicious test accu: 0.8537353735373537
+At round 130 benign test accu: 0.8317094774136404
+At round 130 variance: 0.01199629382604641
+At round 140 training accu: 0.6949764085484319, loss: 1.693509604918103
+At round 140 test loss: 0.4598478075348255
+At round 140 test accu: 0.835614003909721
+At round 140 malicious test accu: 0.8582358235823583
+At round 140 benign test accu: 0.8300487156775908
+At round 140 variance: 0.013992492668763996
+At round 150 training accu: 0.694209074137565, loss: 1.7241830539133898
+At round 150 test loss: 0.45699230731904017
+At round 150 test accu: 0.8353474320241692
+At round 150 malicious test accu: 0.8478847884788479
+At round 150 benign test accu: 0.8322630646589902
+At round 150 variance: 0.011894388385494675
+At round 160 training accu: 0.7068129499926532, loss: 1.7250969092304929
+At round 160 test loss: 0.425162613284626
+At round 160 test accu: 0.8503643149102541
+At round 160 malicious test accu: 0.8631863186318632
+At round 160 benign test accu: 0.8472099202834367
+At round 160 variance: 0.010281465446652056
+At round 170 training accu: 0.6961192470327016, loss: 1.6862358808313345
+At round 170 test loss: 0.4459263265277891
+At round 170 test accu: 0.8352585747289852
+At round 170 malicious test accu: 0.8496849684968497
+At round 170 benign test accu: 0.8317094774136404
+At round 170 variance: 0.01150182489610795
+At round 180 training accu: 0.7128699939592823, loss: 1.6759931349293657
+At round 180 test loss: 0.40998704077304204
+At round 180 test accu: 0.8557846099164741
+At round 180 malicious test accu: 0.8699369936993699
+At round 180 benign test accu: 0.8523029229406555
+At round 180 variance: 0.010674031662267271
+At round 190 training accu: 0.7110741049125728, loss: 1.7267354058698083
+At round 190 test loss: 0.4065866278714853
+At round 190 test accu: 0.8553403234405544
+At round 190 malicious test accu: 0.8631863186318632
+At round 190 benign test accu: 0.8534100974313552
+At round 190 variance: 0.010828760284598364
+At round 200 training accu: 0.704053811366345, loss: 1.7344370196983347
+At round 200 test loss: 0.4293449921780075
+At round 200 test accu: 0.842456015638884
+At round 200 malicious test accu: 0.8582358235823583
+At round 200 benign test accu: 0.8385739592559788
+At round 200 variance: 0.01138873448867193
+At round 210 training accu: 0.7055884801880785, loss: 1.8026747417539162
+At round 210 test loss: 0.41492104190286705
+At round 210 test accu: 0.8481428825306557
+At round 210 malicious test accu: 0.8582358235823583
+At round 210 benign test accu: 0.8456598759964571
+At round 210 variance: 0.013104513996824642
+At round 220 training accu: 0.707188454066056, loss: 1.796452103015388
+At round 220 test loss: 0.41354897904526083
+At round 220 test accu: 0.8486760263017594
+At round 220 malicious test accu: 0.8586858685868587
+At round 220 benign test accu: 0.8462134632418069
+At round 220 variance: 0.010051565642335034
+At round 230 training accu: 0.7160536154511763, loss: 1.7149448164534313
+At round 230 test loss: 0.3949422788582325
+At round 230 test accu: 0.8605829038564066
+At round 230 malicious test accu: 0.8717371737173717
+At round 230 benign test accu: 0.8578387953941541
+At round 230 variance: 0.00934560756243105
+At round 240 training accu: 0.713784264746698, loss: 1.8361190264181138
+At round 240 test loss: 0.39392901974595634
+At round 240 test accu: 0.8585391860671762
+At round 240 malicious test accu: 0.8784878487848785
+At round 240 benign test accu: 0.8536315323294952
+At round 240 variance: 0.010295329237665421
+At round 250 training accu: 0.716820949862043, loss: 1.794532471803477
+At round 250 test loss: 0.3859366015753733
+At round 250 test accu: 0.8612049049226942
+At round 250 malicious test accu: 0.8784878487848785
+At round 250 benign test accu: 0.8569530558015943
+At round 250 variance: 0.009773306706835228
+At round 260 training accu: 0.7222575957943543, loss: 1.723875253192279
+At round 260 test loss: 0.37477049690139813
+At round 260 test accu: 0.8685800604229608
+At round 260 malicious test accu: 0.8843384338433843
+At round 260 benign test accu: 0.8647032772364924
+At round 260 variance: 0.00946037413767651
+At round 270 training accu: 0.7216045452319145, loss: 1.7764519682725373
+At round 270 test loss: 0.37769116661493984
+At round 270 test accu: 0.8624489070552692
+At round 270 malicious test accu: 0.8712871287128713
+At round 270 benign test accu: 0.8602745792736936
+At round 270 variance: 0.009791562682884362
+At round 280 training accu: 0.7194168258477412, loss: 1.802347700947768
+At round 280 test loss: 0.38045313197808905
+At round 280 test accu: 0.8645814821396837
+At round 280 malicious test accu: 0.8766876687668766
+At round 280 benign test accu: 0.8616031886625333
+At round 280 variance: 0.009505462182706731
+At round 290 training accu: 0.6768869079688495, loss: 1.8940823108217664
+At round 290 test loss: 0.49097883365240647
+At round 290 test accu: 0.8063799537942065
+At round 290 malicious test accu: 0.815931593159316
+At round 290 benign test accu: 0.8040301151461471
+At round 290 variance: 0.016389855603503468
+At round 300 training accu: 0.7076619157238249, loss: 1.7977409392230492
+At round 300 test loss: 0.4128979700373365
+At round 300 test accu: 0.8500088857295184
+At round 300 malicious test accu: 0.8568856885688569
+At round 300 benign test accu: 0.8483170947741364
+At round 300 variance: 0.010235894299147157
+At round 310 training accu: 0.7164780983167621, loss: 1.782423898596666
+At round 310 test loss: 0.39474747243537767
+At round 310 test accu: 0.855873467211658
+At round 310 malicious test accu: 0.8645364536453646
+At round 310 benign test accu: 0.853742249778565
+At round 310 variance: 0.009292944465537151
+At round 320 training accu: 0.7227473837161842, loss: 1.8069377400723514
+At round 320 test loss: 0.3642557500501602
+At round 320 test accu: 0.866891771814466
+At round 320 malicious test accu: 0.8838883888388839
+At round 320 benign test accu: 0.8627103631532329
+At round 320 variance: 0.009607688919732968
+At round 330 training accu: 0.7176862418572758, loss: 1.8939528525912865
+At round 330 test loss: 0.378840812786974
+At round 330 test accu: 0.8612049049226942
+At round 330 malicious test accu: 0.8771377137713772
+At round 330 benign test accu: 0.8572852081488043
+At round 330 variance: 0.01207104371441964
+At round 340 training accu: 0.7220616806256225, loss: 1.8466481351331347
+At round 340 test loss: 0.3689287659991516
+At round 340 test accu: 0.8684912031277768
+At round 340 malicious test accu: 0.8861386138613861
+At round 340 benign test accu: 0.8641496899911426
+At round 340 variance: 0.01123579263685486
+At round 350 training accu: 0.7265024244502131, loss: 1.8788034915205787
+At round 350 test loss: 0.3614491241693931
+At round 350 test accu: 0.8706237782121912
+At round 350 malicious test accu: 0.8807380738073808
+At round 350 benign test accu: 0.8681355181576617
+At round 350 variance: 0.008897906581489218
+At round 360 training accu: 0.7223718796427814, loss: 1.928776914048411
+At round 360 test loss: 0.36539926187985833
+At round 360 test accu: 0.8678692020614892
+At round 360 malicious test accu: 0.8861386138613861
+At round 360 benign test accu: 0.8633746678476528
+At round 360 variance: 0.010962049249654804
+At round 370 training accu: 0.7244453151785277, loss: 1.9129019552858417
+At round 370 test loss: 0.3625575714116601
+At round 370 test accu: 0.8724897814110538
+At round 370 malicious test accu: 0.8901890189018902
+At round 370 benign test accu: 0.8681355181576617
+At round 370 variance: 0.011393931096935405
+At round 380 training accu: 0.7304370540889128, loss: 1.8255865006016982
+At round 380 test loss: 0.34852366218666453
+At round 380 test accu: 0.8757775013328595
+At round 380 malicious test accu: 0.8856885688568857
+At round 380 benign test accu: 0.8733392382639504
+At round 380 variance: 0.008942735074126344
+At round 390 training accu: 0.7293268681327651, loss: 1.8180230217441697
+At round 390 test loss: 0.35154947297760475
+At round 390 test accu: 0.8727563532966056
+At round 390 malicious test accu: 0.8856885688568857
+At round 390 benign test accu: 0.8695748449955713
+At round 390 variance: 0.009109917460186747
+At round 400 training accu: 0.7286738175703253, loss: 1.8086554950766072
+At round 400 test loss: 0.35580597534652925
+At round 400 test accu: 0.8724897814110538
+At round 400 malicious test accu: 0.8834383438343835
+At round 400 benign test accu: 0.8697962798937112
+At round 400 variance: 0.008238846875125607
+At round 410 training accu: 0.7164617720527012, loss: 1.9487913913643307
+At round 410 test loss: 0.38534767068896036
+At round 410 test accu: 0.8604051892660387
+At round 410 malicious test accu: 0.8793879387938794
+At round 410 benign test accu: 0.8557351638618246
+At round 410 variance: 0.013254441901673344
+At round 420 training accu: 0.7316941764216094, loss: 1.8469812486581834
+At round 420 test loss: 0.3448941343199473
+At round 420 test accu: 0.8755109294473076
+At round 420 malicious test accu: 0.8906390639063907
+At round 420 benign test accu: 0.8717891939769707
+At round 420 variance: 0.00997209306099079
+At round 430 training accu: 0.7216535240240975, loss: 1.952883985720835
+At round 430 test loss: 0.37657946653985863
+At round 430 test accu: 0.8655589123867069
+At round 430 malicious test accu: 0.8906390639063907
+At round 430 benign test accu: 0.8593888396811338
+At round 430 variance: 0.012640187487607937
+At round 440 training accu: 0.7320043754387684, loss: 1.8387231982839236
+At round 440 test loss: 0.3447842960334786
+At round 440 test accu: 0.8785320774835614
+At round 440 malicious test accu: 0.9018901890189019
+At round 440 benign test accu: 0.8727856510186005
+At round 440 variance: 0.0089581223466371
+At round 450 training accu: 0.7325431421527812, loss: 1.824656724285208
+At round 450 test loss: 0.3431292051861206
+At round 450 test accu: 0.8780877910076418
+At round 450 malicious test accu: 0.8987398739873987
+At round 450 benign test accu: 0.8730070859167405
+At round 450 variance: 0.009811109803617761
+At round 460 training accu: 0.7282330084406785, loss: 1.940969325611877
+At round 460 test loss: 0.35119552413137045
+At round 460 test accu: 0.8702683490314554
+At round 460 malicious test accu: 0.8906390639063907
+At round 460 benign test accu: 0.8652568644818424
+At round 460 variance: 0.012040372123943932
+At round 470 training accu: 0.7302411389201809, loss: 1.8423670956909382
+At round 470 test loss: 0.3463864142832553
+At round 470 test accu: 0.8750666429713879
+At round 470 malicious test accu: 0.8973897389738974
+At round 470 benign test accu: 0.8695748449955713
+At round 470 variance: 0.010723264147155177
+At round 480 training accu: 0.733049256338672, loss: 1.8717166681121011
+At round 480 test loss: 0.3363540421635765
+At round 480 test accu: 0.8774657899413542
+At round 480 malicious test accu: 0.8960396039603961
+At round 480 benign test accu: 0.8728963684676705
+At round 480 variance: 0.00809541015250563
+At round 490 training accu: 0.7365430768477249, loss: 1.7934921049979853
+At round 490 test loss: 0.33269892222398134
+At round 490 test accu: 0.8797760796161365
+At round 490 malicious test accu: 0.8910891089108911
+At round 490 benign test accu: 0.8769929140832595
+At round 490 variance: 0.007688972623191339
+At round 500 training accu: 0.7278738306313366, loss: 1.8894455196404851
+At round 500 test loss: 0.3528783664988082
+At round 500 test accu: 0.8753332148569397
+At round 500 malicious test accu: 0.8937893789378938
+At round 500 benign test accu: 0.870792736935341
+At round 500 variance: 0.011100340199326224
+At round 510 training accu: 0.733098235130855, loss: 1.8655155040752516
+At round 510 test loss: 0.33785710245050105
+At round 510 test accu: 0.8779989337124577
+At round 510 malicious test accu: 0.8933393339333934
+At round 510 benign test accu: 0.8742249778565102
+At round 510 variance: 0.00994239605188866
+At round 520 training accu: 0.7372940849945308, loss: 1.8473644856651152
+At round 520 test loss: 0.32735411364706646
+At round 520 test accu: 0.88030922338724
+At round 520 malicious test accu: 0.8951395139513951
+At round 520 benign test accu: 0.8766607617360496
+At round 520 variance: 0.009110846176173
+At round 530 training accu: 0.7166250346933112, loss: 1.967108168758161
+At round 530 test loss: 0.3980224445551271
+At round 530 test accu: 0.8565843255731296
+At round 530 malicious test accu: 0.8640864086408641
+At round 530 benign test accu: 0.8547387068201948
+At round 530 variance: 0.009192944932493919
+At round 540 training accu: 0.7352206494587843, loss: 1.9335755031230564
+At round 540 test loss: 0.33395334118318876
+At round 540 test accu: 0.8797760796161365
+At round 540 malicious test accu: 0.896939693969397
+At round 540 benign test accu: 0.8755535872453498
+At round 540 variance: 0.00895187523775909
+At round 550 training accu: 0.7360859414540171, loss: 1.8976151373362844
+At round 550 test loss: 0.3329977761327284
+At round 550 test accu: 0.8796872223209525
+At round 550 malicious test accu: 0.8978397839783978
+At round 550 benign test accu: 0.87522143489814
+At round 550 variance: 0.007847167052758926
+At round 560 training accu: 0.7385185547991053, loss: 1.9129909829968186
+At round 560 test loss: 0.3243787965129615
+At round 560 test accu: 0.8827972276523902
+At round 560 malicious test accu: 0.8942394239423942
+At round 560 benign test accu: 0.8799822852081488
+At round 560 variance: 0.00938605386160882
+At round 570 training accu: 0.7412450408972915, loss: 1.8891437387448209
+At round 570 test loss: 0.3187608462881667
+At round 570 test accu: 0.8848409454416207
+At round 570 malicious test accu: 0.8996399639963997
+At round 570 benign test accu: 0.8812001771479185
+At round 570 variance: 0.008409985315031773
+At round 580 training accu: 0.7406736216551566, loss: 1.8931128929716783
+At round 580 test loss: 0.31896183645698306
+At round 580 test accu: 0.8859960902790119
+At round 580 malicious test accu: 0.8991899189918992
+At round 580 benign test accu: 0.8827502214348981
+At round 580 variance: 0.007388210546513578
+At round 590 training accu: 0.7402164862614488, loss: 1.9480504952282323
+At round 590 test loss: 0.3229443676961228
+At round 590 test accu: 0.88324151412831
+At round 590 malicious test accu: 0.8955895589558955
+At round 590 benign test accu: 0.8802037201062888
+At round 590 variance: 0.009503786847425293
+At round 600 training accu: 0.7407062741832786, loss: 1.9791600053804237
+At round 600 test loss: 0.31911212509834896
+At round 600 test accu: 0.8848409454416207
+At round 600 malicious test accu: 0.9036903690369037
+At round 600 benign test accu: 0.8802037201062888
+At round 600 variance: 0.00927220702604707
+At round 610 training accu: 0.7425674682862321, loss: 1.9897858883900732
+At round 610 test loss: 0.31373113793361007
+At round 610 test accu: 0.8865292340501155
+At round 610 malicious test accu: 0.9018901890189019
+At round 610 benign test accu: 0.8827502214348981
+At round 610 variance: 0.007584968966599861
+At round 620 training accu: 0.7398899609802289, loss: 1.824573400116352
+At round 620 test loss: 0.3196512599228576
+At round 620 test accu: 0.8866180913452995
+At round 620 malicious test accu: 0.9063906390639064
+At round 620 benign test accu: 0.8817537643932684
+At round 620 variance: 0.009070035006414996
+At round 630 training accu: 0.7407552529754616, loss: 1.9019561193093852
+At round 630 test loss: 0.32370718017064753
+At round 630 test accu: 0.8848409454416207
+At round 630 malicious test accu: 0.8960396039603961
+At round 630 benign test accu: 0.8820859167404783
+At round 630 variance: 0.008949403397229407
+At round 640 training accu: 0.7378981567647875, loss: 1.9114582987582165
+At round 640 test loss: 0.3281139689230352
+At round 640 test accu: 0.881819797405367
+At round 640 malicious test accu: 0.9018901890189019
+At round 640 benign test accu: 0.8768821966341895
+At round 640 variance: 0.009976828935885614
+At round 650 training accu: 0.7417511550831823, loss: 1.8757227740828972
+At round 650 test loss: 0.3201565199128764
+At round 650 test accu: 0.8841300870801493
+At round 650 malicious test accu: 0.8946894689468947
+At round 650 benign test accu: 0.8815323294951284
+At round 650 variance: 0.008345375006308674
+At round 660 training accu: 0.7443796835970025, loss: 1.9961028255299529
+At round 660 test loss: 0.3139631494681773
+At round 660 test accu: 0.8856406610982762
+At round 660 malicious test accu: 0.8960396039603961
+At round 660 benign test accu: 0.8830823737821081
+At round 660 variance: 0.007331568470999061
+At round 670 training accu: 0.7415715661785114, loss: 1.9490990466192444
+At round 670 test loss: 0.32317767528253
+At round 670 test accu: 0.8827972276523902
+At round 670 malicious test accu: 0.8897389738973898
+At round 670 benign test accu: 0.8810894596988486
+At round 670 variance: 0.00768738069896053
+At round 680 training accu: 0.7412123883691695, loss: 1.9200648140437806
+At round 680 test loss: 0.32027868898150563
+At round 680 test accu: 0.8846632308512529
+At round 680 malicious test accu: 0.9000900090009001
+At round 680 benign test accu: 0.8808680248007086
+At round 680 variance: 0.009794176356696877
+At round 690 training accu: 0.7253269334378214, loss: 2.0970543080865607
+At round 690 test loss: 0.37216368887846735
+At round 690 test accu: 0.8701794917362715
+At round 690 malicious test accu: 0.8888388838883888
+At round 690 benign test accu: 0.8655890168290522
+At round 690 variance: 0.012645142064840709
+At round 700 training accu: 0.739645067019314, loss: 1.8696924231504184
+At round 700 test loss: 0.3182402108457474
+At round 700 test accu: 0.8819086547005509
+At round 700 malicious test accu: 0.8946894689468947
+At round 700 benign test accu: 0.8787643932683791
+At round 700 variance: 0.008007087342789649
+At round 710 training accu: 0.7415225873863284, loss: 1.9494989277828316
+At round 710 test loss: 0.3254650875524078
+At round 710 test accu: 0.8835080860138618
+At round 710 malicious test accu: 0.8901890189018902
+At round 710 benign test accu: 0.8818644818423383
+At round 710 variance: 0.00840241657973691
+At round 720 training accu: 0.7444286623891855, loss: 1.9188318036194545
+At round 720 test loss: 0.31267140568616353
+At round 720 test accu: 0.8865292340501155
+At round 720 malicious test accu: 0.905040504050405
+At round 720 benign test accu: 0.8819751992914083
+At round 720 variance: 0.008677953176917512
+At round 730 training accu: 0.7416368712347553, loss: 1.9173028581185299
+At round 730 test loss: 0.32022795783913105
+At round 730 test accu: 0.8798649369113204
+At round 730 malicious test accu: 0.9005400540054005
+At round 730 benign test accu: 0.87477856510186
+At round 730 variance: 0.00892562463779392
+At round 740 training accu: 0.7480367667466654, loss: 1.918472097095044
+At round 740 test loss: 0.30428955131757396
+At round 740 test accu: 0.8906166696285766
+At round 740 malicious test accu: 0.9027902790279028
+At round 740 benign test accu: 0.8876217891939769
+At round 740 variance: 0.007626082003464636
+At round 750 training accu: 0.7423389005893781, loss: 1.845398138706303
+At round 750 test loss: 0.3180036684664528
+At round 750 test accu: 0.887240092411587
+At round 750 malicious test accu: 0.9036903690369037
+At round 750 benign test accu: 0.8831930912311781
+At round 750 variance: 0.00961448433367339
+At round 760 training accu: 0.7407062741832786, loss: 2.016602993867274
+At round 760 test loss: 0.32833726399123664
+At round 760 test accu: 0.880575795272792
+At round 760 malicious test accu: 0.8910891089108911
+At round 760 benign test accu: 0.8779893711248893
+At round 760 variance: 0.00774831643791481
+At round 770 training accu: 0.7488857324778371, loss: 2.024348483600221
+At round 770 test loss: 0.3021995100615272
+At round 770 test accu: 0.8903500977430246
+At round 770 malicious test accu: 0.9086408640864087
+At round 770 benign test accu: 0.8858503100088574
+At round 770 variance: 0.007486413935015537
+At round 780 training accu: 0.7515958923119622, loss: 1.995429561924182
+At round 780 test loss: 0.29647407188319497
+At round 780 test accu: 0.8939043895503821
+At round 780 malicious test accu: 0.9027902790279028
+At round 780 benign test accu: 0.891718334809566
+At round 780 variance: 0.007012818023168233
+At round 790 training accu: 0.7510571255979495, loss: 1.9574395538303788
+At round 790 test loss: 0.2950504433299293
+At round 790 test accu: 0.8936378176648303
+At round 790 malicious test accu: 0.9086408640864087
+At round 790 benign test accu: 0.8899468556244464
+At round 790 variance: 0.007734029528862246
+At round 800 training accu: 0.7392205841537282, loss: 2.0025626275676185
+At round 800 test loss: 0.32630569918855085
+At round 800 test accu: 0.8772880753509863
+At round 800 malicious test accu: 0.8861386138613861
+At round 800 benign test accu: 0.87511071744907
+At round 800 variance: 0.0077626694744908865
+At round 810 training accu: 0.7445266199735514, loss: 1.995503958905068
+At round 810 test loss: 0.318156087135646
+At round 810 test accu: 0.8855518038030923
+At round 810 malicious test accu: 0.905040504050405
+At round 810 benign test accu: 0.8807573073516386
+At round 810 variance: 0.008830292503439972
+At round 820 training accu: 0.7401838337333269, loss: 1.9723719794112387
+At round 820 test loss: 0.3239378867344343
+At round 820 test accu: 0.8783543628931936
+At round 820 malicious test accu: 0.8856885688568857
+At round 820 benign test accu: 0.8765500442869796
+At round 820 variance: 0.007821787420098468
+At round 830 training accu: 0.7410491257285595, loss: 2.0715788206251387
+At round 830 test loss: 0.3236687170549201
+At round 830 test accu: 0.8866180913452995
+At round 830 malicious test accu: 0.9005400540054005
+At round 830 benign test accu: 0.8831930912311781
+At round 830 variance: 0.01037779812448359
+At round 840 training accu: 0.7502897911870826, loss: 1.96117664962373
+At round 840 test loss: 0.2951527828992344
+At round 840 test accu: 0.8914163852852319
+At round 840 malicious test accu: 0.905040504050405
+At round 840 benign test accu: 0.8880646589902569
+At round 840 variance: 0.007072944528855545
+At round 850 training accu: 0.7451633442719302, loss: 1.9804735297068319
+At round 850 test loss: 0.31252795286069956
+At round 850 test accu: 0.8865292340501155
+At round 850 malicious test accu: 0.8973897389738974
+At round 850 benign test accu: 0.8838573959255979
+At round 850 variance: 0.010397111351706779
+At round 860 training accu: 0.7499959184339847, loss: 2.0039750985853284
+At round 860 test loss: 0.30094713657991456
+At round 860 test accu: 0.8874178070019548
+At round 860 malicious test accu: 0.8942394239423942
+At round 860 benign test accu: 0.8857395925597874
+At round 860 variance: 0.007416642536386644
+At round 870 training accu: 0.7511224306541934, loss: 2.0049014710735533
+At round 870 test loss: 0.2947874690498048
+At round 870 test accu: 0.8907055269237605
+At round 870 malicious test accu: 0.9027902790279028
+At round 870 benign test accu: 0.8877325066430469
+At round 870 variance: 0.0067914929556419715
+At round 880 training accu: 0.7444123361251245, loss: 2.0035095941473937
+At round 880 test loss: 0.3132761567167346
+At round 880 test accu: 0.8811089390438955
+At round 880 malicious test accu: 0.9000900090009001
+At round 880 benign test accu: 0.8764393268379097
+At round 880 variance: 0.007710747658547918
+At round 890 training accu: 0.7553346067819301, loss: 2.0142314818340714
+At round 890 test loss: 0.290111507526411
+At round 890 test accu: 0.895237248978141
+At round 890 malicious test accu: 0.9113411341134113
+At round 890 benign test accu: 0.8912754650132861
+At round 890 variance: 0.007289595258491738
+At round 900 training accu: 0.7487224698372271, loss: 2.0355652872575116
+At round 900 test loss: 0.30591401898642095
+At round 900 test accu: 0.889905811267105
+At round 900 malicious test accu: 0.9063906390639064
+At round 900 benign test accu: 0.8858503100088574
+At round 900 variance: 0.009503094561502135
+At round 910 training accu: 0.7546815562194903, loss: 2.1116517366433727
+At round 910 test loss: 0.2997537313413111
+At round 910 test accu: 0.8941709614359339
+At round 910 malicious test accu: 0.9086408640864087
+At round 910 benign test accu: 0.8906111603188662
+At round 910 variance: 0.007336603778508515
+At round 920 training accu: 0.7565917291146267, loss: 1.9517317977457558
+At round 920 test loss: 0.29035682373786764
+At round 920 test accu: 0.8965701084059001
+At round 920 malicious test accu: 0.9068406840684068
+At round 920 benign test accu: 0.8940434012400355
+At round 920 variance: 0.006828931264061288
+At round 930 training accu: 0.7502897911870826, loss: 2.0073724452260384
+At round 930 test loss: 0.3075326654866986
+At round 930 test accu: 0.8860849475741959
+At round 930 malicious test accu: 0.8951395139513951
+At round 930 benign test accu: 0.8838573959255979
+At round 930 variance: 0.006945629660966918
+At round 940 training accu: 0.7344043362557346, loss: 2.2276132445897767
+At round 940 test loss: 0.358419901770739
+At round 940 test accu: 0.8755997867424915
+At round 940 malicious test accu: 0.8942394239423942
+At round 940 benign test accu: 0.871014171833481
+At round 940 variance: 0.011724123652518239
+At round 950 training accu: 0.7465510767171148, loss: 2.0525439545482156
+At round 950 test loss: 0.31497753504009945
+At round 950 test accu: 0.8843966589657011
+At round 950 malicious test accu: 0.8960396039603961
+At round 950 benign test accu: 0.8815323294951284
+At round 950 variance: 0.007338287905660257
+At round 960 training accu: 0.7450327341594423, loss: 2.0379507013610234
+At round 960 test loss: 0.3172111162578683
+At round 960 test accu: 0.8807535098631598
+At round 960 malicious test accu: 0.8964896489648965
+At round 960 benign test accu: 0.8768821966341895
+At round 960 variance: 0.00794439059643366
+At round 970 training accu: 0.7520040489134872, loss: 2.0547448466998346
+At round 970 test loss: 0.2994643566105134
+At round 970 test accu: 0.8893726674960014
+At round 970 malicious test accu: 0.9108910891089109
+At round 970 benign test accu: 0.8840788308237378
+At round 970 variance: 0.007387819817098822
+At round 980 training accu: 0.7512040619744984, loss: 2.0128446892249032
+At round 980 test loss: 0.3042093125758567
+At round 980 test accu: 0.8907943842189444
+At round 980 malicious test accu: 0.9036903690369037
+At round 980 benign test accu: 0.8876217891939769
+At round 980 variance: 0.009270157160336847
+At round 990 training accu: 0.7564447927380777, loss: 2.0293195622995754
+At round 990 test loss: 0.29245038975901755
+At round 990 test accu: 0.8920383863515194
+At round 990 malicious test accu: 0.9086408640864087
+At round 990 benign test accu: 0.8879539415411869
+At round 990 variance: 0.006838327470407707
+At round 1000 training accu: 0.7580447666160552, loss: 2.065989765125471
+At round 1000 test loss: 0.28857018117786615
+At round 1000 test accu: 0.8970143948818198
+At round 1000 malicious test accu: 0.9032403240324033
+At round 1000 benign test accu: 0.895482728077945
+At round 1000 variance: 0.006475056179573132
+After finetuning training accu: 0.7540285056570505, loss: 2.1117714811989834
+After finetuning test loss: 0.2941964315834351
+After finetuning test accu: 0.8960369646347965
+After finetuning malicious test accu: 0.9068406840684068
+After finetuning benign test accu: 0.8933790965456155
+After finetuning variance: 0.00879304119930314

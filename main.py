@@ -10,7 +10,7 @@ from flearn.utils.model_utils import read_data
 # GLOBAL PARAMETERS
 OPTIMIZERS = ['fedsgd', 'fedavg', 'finetuning',
               'l2sgd', 'ditto', 'ewc', 'apfl', 'mapper', 'kl', 'meta', 'fedavgper']
-DATASETS = ['vehicle', 'femnist', 'fmnist', 'celeba']   # fmnist: fashion mnist 
+DATASETS = ['vehicle', 'femnist', 'fmnist', 'celeba', 'adult']   # fmnist: fashion mnist 
 
 
 MODEL_PARAMS = {

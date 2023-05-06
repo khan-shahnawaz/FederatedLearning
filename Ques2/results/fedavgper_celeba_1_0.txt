@@ -1,0 +1,201 @@
+Arguments:
+	              alpha : 0.0
+	         batch_size : 32
+	           boosting : 0
+	  clients_per_round : 10
+	          comm_freq : 0.1
+	data_partition_seed : 0
+	            dataset : celeba
+	       decay_factor : 1.0
+	        dynamic_lam : 0
+	         eval_every : 10
+	            fedmgda : 0
+	        fedmgda_eps : 0.0
+	     finetune_iters : 40
+	         global_reg : -1.0
+	  gradient_clipping : 0
+	             k_loss : 0
+	             k_norm : 0
+	               krum : 0
+	                lam : 0.0
+	       lambda_l2sgd : 0
+	      learning_rate : 0.1
+	        local_iters : 2
+	             median : 0
+	              mkrum : 0
+	              model : cnn
+	       model_params : (2,)
+	      num_corrupted : 0
+	         num_epochs : 1
+	         num_rounds : 1000
+	          optimizer : fedavgper
+	                  q : 0.0
+	     random_updates : 0
+	           sampling : 2
+	               seed : 0
+Using fedavgper to Train
+Parsing Inputs...
+
+=========================Options=============================
+-max_depth                  10000
+-min_bytes                  0
+-min_peak_bytes             0
+-min_residual_bytes         0
+-min_output_bytes           0
+-min_micros                 0
+-min_accelerator_micros     0
+-min_cpu_micros             0
+-min_params                 0
+-min_float_ops              1
+-min_occurrence             0
+-step                       -1
+-order_by                   float_ops
+-account_type_regexes       .*
+-start_name_regexes         .*
+-trim_name_regexes          
+-show_name_regexes          .*
+-hide_name_regexes          
+-account_displayed_op_only  true
+-select                     float_ops
+-output                     stdout:
+
+==================Model Analysis Report======================
+
+Doc:
+scope: The nodes in the model graph are organized by their names, which is hierarchical like filesystem.
+flops: Number of float operations. Note: Please read the implementation for the math behind it.
+
+Profile:
+node name | # float_ops
+_TFProfRoot (--/62.43k flops)
+  conv2d_3/kernel/Initializer/random_uniform (9.22k/18.43k flops)
+    conv2d_3/kernel/Initializer/random_uniform/mul (9.22k/9.22k flops)
+    conv2d_3/kernel/Initializer/random_uniform/sub (1/1 flops)
+  conv2d_2/kernel/Initializer/random_uniform (9.22k/18.43k flops)
+    conv2d_2/kernel/Initializer/random_uniform/mul (9.22k/9.22k flops)
+    conv2d_2/kernel/Initializer/random_uniform/sub (1/1 flops)
+  conv2d_1/kernel/Initializer/random_uniform (9.22k/18.43k flops)
+    conv2d_1/kernel/Initializer/random_uniform/mul (9.22k/9.22k flops)
+    conv2d_1/kernel/Initializer/random_uniform/sub (1/1 flops)
+  dense/kernel/Initializer/random_uniform (2.30k/4.61k flops)
+    dense/kernel/Initializer/random_uniform/mul (2.30k/2.30k flops)
+    dense/kernel/Initializer/random_uniform/sub (1/1 flops)
+  conv2d/kernel/Initializer/random_uniform (864/1.73k flops)
+    conv2d/kernel/Initializer/random_uniform/mul (864/864 flops)
+    conv2d/kernel/Initializer/random_uniform/sub (1/1 flops)
+  batch_normalization/AssignMovingAvg_1 (32/97 flops)
+    batch_normalization/AssignMovingAvg_1/mul (32/32 flops)
+    batch_normalization/AssignMovingAvg_1/sub_1 (32/32 flops)
+    batch_normalization/AssignMovingAvg_1/sub (1/1 flops)
+  batch_normalization/AssignMovingAvg (32/97 flops)
+    batch_normalization/AssignMovingAvg/mul (32/32 flops)
+    batch_normalization/AssignMovingAvg/sub_1 (32/32 flops)
+    batch_normalization/AssignMovingAvg/sub (1/1 flops)
+  batch_normalization_3/AssignMovingAvg_1 (32/97 flops)
+    batch_normalization_3/AssignMovingAvg_1/mul (32/32 flops)
+    batch_normalization_3/AssignMovingAvg_1/sub_1 (32/32 flops)
+    batch_normalization_3/AssignMovingAvg_1/sub (1/1 flops)
+  batch_normalization_3/AssignMovingAvg (32/97 flops)
+    batch_normalization_3/AssignMovingAvg/mul (32/32 flops)
+    batch_normalization_3/AssignMovingAvg/sub_1 (32/32 flops)
+    batch_normalization_3/AssignMovingAvg/sub (1/1 flops)
+  batch_normalization_2/AssignMovingAvg_1 (32/97 flops)
+    batch_normalization_2/AssignMovingAvg_1/mul (32/32 flops)
+    batch_normalization_2/AssignMovingAvg_1/sub_1 (32/32 flops)
+    batch_normalization_2/AssignMovingAvg_1/sub (1/1 flops)
+  batch_normalization_2/AssignMovingAvg (32/97 flops)
+    batch_normalization_2/AssignMovingAvg/mul (32/32 flops)
+    batch_normalization_2/AssignMovingAvg/sub_1 (32/32 flops)
+    batch_normalization_2/AssignMovingAvg/sub (1/1 flops)
+  batch_normalization_1/AssignMovingAvg_1 (32/97 flops)
+    batch_normalization_1/AssignMovingAvg_1/mul (32/32 flops)
+    batch_normalization_1/AssignMovingAvg_1/sub_1 (32/32 flops)
+    batch_normalization_1/AssignMovingAvg_1/sub (1/1 flops)
+  batch_normalization_1/AssignMovingAvg (32/97 flops)
+    batch_normalization_1/AssignMovingAvg/mul (32/32 flops)
+    batch_normalization_1/AssignMovingAvg/sub_1 (32/32 flops)
+    batch_normalization_1/AssignMovingAvg/sub (1/1 flops)
+  gradients_1/Sum_1_grad/Maximum (2/2 flops)
+  gradients_1/Sum_grad/Maximum (2/2 flops)
+  sparse_softmax_cross_entropy_loss/num_present/Equal (1/1 flops)
+  sparse_softmax_cross_entropy_loss/div (1/1 flops)
+  sparse_softmax_cross_entropy_loss/Greater (1/1 flops)
+  sparse_softmax_cross_entropy_loss/Equal (1/1 flops)
+  gradients_1/Sum_grad/add (1/1 flops)
+  gradients_1/Sum_1_grad/add (1/1 flops)
+  gradients/sparse_softmax_cross_entropy_loss/div_grad/mul (1/1 flops)
+  gradients/sparse_softmax_cross_entropy_loss/div_grad/RealDiv_2 (1/1 flops)
+  gradients/sparse_softmax_cross_entropy_loss/div_grad/RealDiv_1 (1/1 flops)
+  gradients/sparse_softmax_cross_entropy_loss/div_grad/RealDiv (1/1 flops)
+  gradients/sparse_softmax_cross_entropy_loss/div_grad/Neg (1/1 flops)
+
+======================End of Report==========================
+515 Clients in Total
+Training with 10 workers ---
+[]
+At round 0 training accu: 0.5442604856512141, loss: 1.6829907135038777
+At round 0 test loss: 1.6998989714446224
+At round 0 test accu: 0.5398082534389329
+At round 0 malicious test accu: nan
+At round 0 benign test accu: 0.5398082534389329
+At round 0 variance: 0.10805247501960537
+At round 10 training accu: 0.549448123620309, loss: 0.9463123704835148
+At round 10 test loss: 1.0132180317862114
+At round 10 test accu: 0.5489787411421425
+At round 10 malicious test accu: nan
+At round 10 benign test accu: 0.5489787411421425
+At round 10 variance: 0.10594650629284297
+At round 20 training accu: 0.6275938189845475, loss: 0.6527060801060521
+At round 20 test loss: 0.6766365718386878
+At round 20 test accu: 0.6073363901625677
+At round 20 malicious test accu: nan
+At round 20 benign test accu: 0.6073363901625677
+At round 20 variance: 0.07832741165087016
+At round 30 training accu: 0.6421633554083885, loss: 0.6394148513937892
+At round 30 test loss: 0.667226928945828
+At round 30 test accu: 0.6115047936640267
+At round 30 malicious test accu: nan
+At round 30 benign test accu: 0.6115047936640267
+At round 30 variance: 0.07636898376405264
+At round 40 training accu: 0.5594922737306843, loss: 0.7768469898577031
+At round 40 test loss: 0.8221594978460872
+At round 40 test accu: 0.5543976656940391
+At round 40 malicious test accu: nan
+At round 40 benign test accu: 0.5543976656940391
+At round 40 variance: 0.10492266759344576
+At round 50 training accu: 0.6517660044150111, loss: 0.6315444026824918
+At round 50 test loss: 0.6675953871759587
+At round 50 test accu: 0.6152563568153397
+At round 50 malicious test accu: nan
+At round 50 benign test accu: 0.6152563568153397
+At round 50 variance: 0.07552767951055121
+At round 60 training accu: 0.6747240618101545, loss: 0.6057053260192703
+At round 60 test loss: 0.6404463258098692
+At round 60 test accu: 0.6490204251771572
+At round 60 malicious test accu: nan
+At round 60 benign test accu: 0.6490204251771572
+At round 60 variance: 0.07346376637813827
+At round 70 training accu: 0.6997792494481236, loss: 0.5823251255991443
+At round 70 test loss: 0.6069471673289156
+At round 70 test accu: 0.6823676531888286
+At round 70 malicious test accu: nan
+At round 70 benign test accu: 0.6823676531888286
+At round 70 variance: 0.07264632839656741
+At round 80 training accu: 0.7144591611479029, loss: 0.5600819716225923
+At round 80 test loss: 0.5928404533031361
+At round 80 test accu: 0.6819508128386828
+At round 80 malicious test accu: nan
+At round 80 benign test accu: 0.6819508128386828
+At round 80 variance: 0.07346150927773001
+At round 90 training accu: 0.7052980132450332, loss: 0.5822644386613212
+At round 90 test loss: 0.6268920788223878
+At round 90 test accu: 0.6861192163401417
+At round 90 malicious test accu: nan
+At round 90 benign test accu: 0.6861192163401417
+At round 90 variance: 0.08118006595606479
+At round 100 training accu: 0.7942604856512141, loss: 0.44491253097194183
+At round 100 test loss: 0.4864101676754079
+At round 100 test accu: 0.77157148812005
+At round 100 malicious test accu: nan
+At round 100 benign test accu: 0.77157148812005
+At round 100 variance: 0.0682154393790067
