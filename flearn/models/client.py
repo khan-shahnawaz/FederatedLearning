@@ -111,7 +111,7 @@ class Client(object):
         '''
         pos_test_data = {'x': [], 'y': []}
         for i in range(len(self.test_data['y'])):
-            if self.test_data['y'][i][0] == 1 and self.test_data['x'][i][3] == 0:
+            if self.test_data['y'][i][0] == 1 and self.test_data['x'][i][3] == 1:
                 pos_test_data['x'].append(self.test_data['x'][i])
                 pos_test_data['y'].append(self.test_data['y'][i])
         
@@ -127,7 +127,7 @@ class Client(object):
         '''
         pos_test_data = {'x': [], 'y': []}
         for i in range(len(self.test_data['y'])):
-            if self.test_data['y'][i][0] == 1 and self.test_data['x'][i][3] == 1:
+            if self.test_data['y'][i][0] == 1 and self.test_data['x'][i][3] == 0:
                 pos_test_data['x'].append(self.test_data['x'][i])
                 pos_test_data['y'].append(self.test_data['y'][i])
         tot_correct, loss = self.model.test(pos_test_data)

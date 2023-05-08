@@ -19,6 +19,7 @@ MODEL_PARAMS = {
     'vehicle.svm': (2, ), # num_classes
     'celeba.cnn': (2,), # num_classes
     'adult.svm': (2,), # num_classes
+    'adult.svm_fair': (2,), # num_classes
 }
 
 

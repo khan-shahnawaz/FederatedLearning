@@ -26,36 +26,37 @@ ensure_permission('./run.sh')
 
 ''' Results for figure 2 and table 1'''
 optimiser = 'ditto'
-lambdas = [100,1, 0]
-lambdas_names = ['global', 'ditto', 'local']
+lambdas = [1, 0,100]
+lambdas_names = [ 'ditto', 'local','global']
 datasets = ['adult']
 num_clients = [41]
 adverseries = [1,2,3]
 currupt_ratio = [0, 0.2, 0.5, 0.8]
-num_rounds = 1000
+num_rounds = 1001
 batch_size = 32
-model='svm'
+models=['svm_fair','svm']
 
 for lam, lambda_name in zip(lambdas, lambdas_names):
     for dataset,num_client in zip(datasets, num_clients):
         for adversary in adverseries:
             for ratio in currupt_ratio:
-                filename = os.path.join(RESULTS_DIR, 'results/') + lambda_name + '_' + dataset + '_' + str(adversary) + '_' + str(ratio) + '.txt'
-                num_currupted = int(num_client * ratio)
-                A = [0,0,0]
-                A[adversary-1] = 1
-                params = [
-                    dataset,
-                    optimiser,
-                    num_rounds,
-                    batch_size,
-                    model,
-                    num_currupted,
-                    A[2],
-                    A[1],
-                    filename,
-                    lam,
-                ]
-                print(' '.join(map(str, params)))
-                # Terminate the main process if os.system returns non-zero exit code
-                execute(filename, params)
+                for model in models:
+                    filename = os.path.join(RESULTS_DIR, 'results/') + lambda_name + '_' + dataset + '_' + str(adversary) + '_' + str(ratio) + '_' + model + '.txt'
+                    num_currupted = int(num_client * ratio)
+                    A = [0,0,0]
+                    A[adversary-1] = 1
+                    params = [
+                        dataset,
+                        optimiser,
+                        num_rounds,
+                        batch_size,
+                        model,
+                        num_currupted,
+                        A[2],
+                        A[1],
+                        filename,
+                        lam,
+                    ]
+                    print(' '.join(map(str, params)))
+                    # Terminate the main process if os.system returns non-zero exit code
+                    execute(filename, params)

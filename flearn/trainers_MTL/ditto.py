@@ -47,7 +47,7 @@ class Server(BaseFedarated):
                     c.train_data['y'] = np.random.randint(0, 62, len(c.train_data['y']))  # [0, 62)
                 elif self.dataset == 'shakespeare':
                     c.train_data['y'] = np.random.randint(0, 80, len(c.train_data['y']))
-                elif self.dataset == "vehicle":
+                elif self.dataset == "vehicle" or "adult":  # Flip the outcome for adult and vehicle
                     c.train_data['y'] = c.train_data['y'] * -1
                 elif self.dataset == "fmnist":
                     c.train_data['y'] = np.random.randint(0, 10, len(c.train_data['y']))
@@ -59,7 +59,7 @@ class Server(BaseFedarated):
                 batches[c] = gen_batch(c.train_data, self.batch_size, self.num_rounds * self.local_iters)
 
 
-        for i in range(self.num_rounds + 1):
+        for i in range(self.num_rounds ):
             if i % self.eval_every == 0 and i > 0:
                 tmp_models = []
                 for idx in range(len(self.clients)):
@@ -70,20 +70,22 @@ class Server(BaseFedarated):
                     num_pos_female, num_correct_female, __ = self.test_on_positive_female(tmp_models)
                     male_tpr = []
                     female_tpr = []
+                    
                     for j in range(num_pos_male.shape[0]):
                         if num_pos_male[j]>0:
                             male_tpr.append(num_correct_male[j]/num_pos_male[j])
                         else:
                             male_tpr.append(0)
                         if num_pos_female[[j]]>0:
-                            female_tpr.append(num_pos_female[j]/num_pos_female[j])
+                            female_tpr.append(num_correct_female[j]/num_pos_female[j])
                         else:
                             female_tpr.append(0)
                     male_tpr=np.array(male_tpr)
                     female_tpr=np.array(female_tpr)
                     tqdm.write('At round {} average TPR for male: {}'.format(i, np.sum(num_correct_male)*1.0/np.sum(num_pos_male)))
                     tqdm.write('At round {} average TPR for female: {}'.format(i, np.sum(num_correct_female)*1.0/np.sum(num_pos_female)))
-                    tqdm.write('At round {} Mean sqaured TPR difference is: {}'.format(i, np.var(male_tpr-female_tpr)))
+                    tqdm.write('At round {} Ratio Female TPR/Male TPR: {}'.format(i, np.sum(num_correct_female)*np.sum(num_pos_male)/(np.sum(num_correct_male)*np.sum(num_pos_female))))
+                    
                     
                 num_train, num_correct_train, loss_vector = self.train_error(tmp_models)
                 avg_train_loss = np.dot(loss_vector, num_train) / np.sum(num_train)
