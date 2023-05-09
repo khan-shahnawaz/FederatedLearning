@@ -1,0 +1,892 @@
+Arguments:
+	              alpha : 0.0
+	         batch_size : 32
+	           boosting : 1
+	  clients_per_round : 10
+	          comm_freq : 0.1
+	data_partition_seed : 0
+	            dataset : adult
+	       decay_factor : 1.0
+	        dynamic_lam : 0
+	         eval_every : 10
+	            fedmgda : 0
+	        fedmgda_eps : 0.0
+	     finetune_iters : 40
+	         global_reg : -1.0
+	  gradient_clipping : 0
+	             k_loss : 0
+	             k_norm : 0
+	               krum : 0
+	                lam : 100.0
+	       lambda_l2sgd : 0
+	      learning_rate : 0.1
+	        local_iters : 2
+	             median : 0
+	              mkrum : 0
+	              model : svm_fair
+	       model_params : (2,)
+	      num_corrupted : 20
+	         num_epochs : 1
+	         num_rounds : 1001
+	          optimizer : ditto
+	                  q : 0.0
+	     random_updates : 0
+	           sampling : 2
+	               seed : 0
+['0', '1', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '2', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '3', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '4', '5', '6', '7', '8', '9'] clients printed here
+Using global-regularized multi-task learning to Train
+Parsing Inputs...
+
+=========================Options=============================
+-max_depth                  10000
+-min_bytes                  0
+-min_peak_bytes             0
+-min_residual_bytes         0
+-min_output_bytes           0
+-min_micros                 0
+-min_accelerator_micros     0
+-min_cpu_micros             0
+-min_params                 0
+-min_float_ops              1
+-min_occurrence             0
+-step                       -1
+-order_by                   float_ops
+-account_type_regexes       .*
+-start_name_regexes         .*
+-trim_name_regexes          
+-show_name_regexes          .*
+-hide_name_regexes          
+-account_displayed_op_only  true
+-select                     float_ops
+-output                     stdout:
+
+==================Model Analysis Report======================
+
+Doc:
+scope: The nodes in the model graph are organized by their names, which is hierarchical like filesystem.
+flops: Number of float operations. Note: Please read the implementation for the math behind it.
+
+Profile:
+node name | # float_ops
+_TFProfRoot (--/320 flops)
+  Square (62/62 flops)
+  gradients/AddN (62/62 flops)
+  gradients/Square_grad/Mul (62/62 flops)
+  gradients/Square_grad/Mul_1 (62/62 flops)
+  Sum_2 (61/61 flops)
+  add_1 (1/1 flops)
+  add_2 (1/1 flops)
+  add_3 (1/1 flops)
+  gradients/Mean_grad/Maximum (1/1 flops)
+  gradients/mul_2_grad/Mul (1/1 flops)
+  gradients/mul_2_grad/Mul_1 (1/1 flops)
+  mul (1/1 flops)
+  mul_1 (1/1 flops)
+  mul_2 (1/1 flops)
+  truediv (1/1 flops)
+  truediv_1 (1/1 flops)
+
+======================End of Report==========================
+40 Clients in Total
+---10 workers per communication round---
+[22 25 24 12 29 17 31  9  8 27 28 10 20 38 36 23  0  1 30 21]
+At round 10 average TPR for male: 0.16481069042316257
+At round 10 average TPR for female: 0.10951526032315978
+At round 10 Ratio Female TPR/Male TPR: 0.6644912416905235
+At round 10 training accu: 0.2363316866151653, loss: 3.609914044606293e+33
+At round 10 test accu: 0.7387782204515272
+At round 10 malicious test accu: 0.7660624867762184
+At round 10 benign test accu: 0.2996594778660613
+variance of the performance:  0.11447733106230347
+At round 20 average TPR for male: 0.1689468660515431
+At round 20 average TPR for female: 0.10951526032315978
+At round 20 Ratio Female TPR/Male TPR: 0.6482230945304919
+At round 20 training accu: 0.2396472265508438, loss: inf
+At round 20 test accu: 0.7435590969455511
+At round 20 malicious test accu: 0.7677551308272798
+At round 20 benign test accu: 0.35414301929625425
+variance of the performance:  0.09849524670212853
+At round 30 average TPR for male: 0.028635062042634427
+At round 30 average TPR for female: 0.01615798922800718
+At round 30 Ratio Female TPR/Male TPR: 0.5642728904847397
+At round 30 training accu: 0.0267564072809257, loss: nan
+At round 30 test accu: 0.03877822045152723
+At round 30 malicious test accu: 0.019324352916284645
+At round 30 benign test accu: 0.3518728717366629
+variance of the performance:  0.09800823048563809
+At round 40 average TPR for male: 0.02481705377028317
+At round 40 average TPR for female: 0.012567324955116697
+At round 40 Ratio Female TPR/Male TPR: 0.5063987478709202
+At round 40 training accu: 0.019992705812141506, loss: nan
+At round 40 test accu: 0.030810092961487383
+At round 40 malicious test accu: 0.01960646025812822
+At round 40 benign test accu: 0.21112372304199772
+variance of the performance:  0.11135414457413548
+At round 50 average TPR for male: 0.022271714922048998
+At round 50 average TPR for female: 0.008976660682226212
+At round 50 Ratio Female TPR/Male TPR: 0.4030520646319569
+At round 50 training accu: 0.017472895461025827, loss: nan
+At round 50 test accu: 0.02802124833997344
+At round 50 malicious test accu: 0.017349601523379644
+At round 50 benign test accu: 0.19977298524404086
+variance of the performance:  0.11759296477488504
+At round 60 average TPR for male: 0.0200445434298441
+At round 60 average TPR for female: 0.008976660682226212
+At round 60 Ratio Female TPR/Male TPR: 0.447835627368841
+At round 60 training accu: 0.015649348496402638, loss: nan
+At round 60 test accu: 0.023837981407702522
+At round 60 malicious test accu: 0.012906410889343396
+At round 60 benign test accu: 0.19977298524404086
+variance of the performance:  0.11759296477488504
+At round 70 average TPR for male: 0.01845370664969774
+At round 70 average TPR for female: 0.005385996409335727
+At round 70 Ratio Female TPR/Male TPR: 0.2918652881817619
+At round 70 training accu: 0.012134876164583402, loss: nan
+At round 70 test accu: 0.019853917662682602
+At round 70 malicious test accu: 0.01156640101558643
+At round 70 benign test accu: 0.1532349602724177
+variance of the performance:  0.11982138003947454
+At round 80 average TPR for male: 0.013999363665287942
+At round 80 average TPR for female: 0.0017953321364452424
+At round 80 Ratio Female TPR/Male TPR: 0.12824383874653175
+At round 80 training accu: 0.010178707602533072, loss: nan
+At round 80 test accu: 0.01752988047808765
+At round 80 malicious test accu: 0.010720078990055715
+At round 80 benign test accu: 0.1271282633371169
+variance of the performance:  0.12437947652118213
+At round 90 average TPR for male: 0.00922685332484887
+At round 90 average TPR for female: 0.0017953321364452424
+At round 90 Ratio Female TPR/Male TPR: 0.19457685878784126
+At round 90 training accu: 0.006896323066211333, loss: nan
+At round 90 test accu: 0.011288180610889775
+At round 90 malicious test accu: 0.006276888356019465
+At round 90 benign test accu: 0.09194097616345062
+variance of the performance:  0.12041951343739095
+At round 100 average TPR for male: 0.008590518612790327
+At round 100 average TPR for female: 0.0017953321364452424
+At round 100 Ratio Female TPR/Male TPR: 0.20898995943879248
+At round 100 training accu: 0.006830012267497762, loss: nan
+At round 100 test accu: 0.011155378486055778
+At round 100 malicious test accu: 0.006276888356019465
+At round 100 benign test accu: 0.08967082860385925
+variance of the performance:  0.12227296198314716
+At round 110 average TPR for male: 0.008590518612790327
+At round 110 average TPR for female: 0.0017953321364452424
+At round 110 Ratio Female TPR/Male TPR: 0.20898995943879248
+At round 110 training accu: 0.005901661085507775, loss: nan
+At round 110 test accu: 0.010292164674634794
+At round 110 malicious test accu: 0.006276888356019465
+At round 110 benign test accu: 0.07491486946651532
+variance of the performance:  0.1338524250440917
+At round 120 average TPR for male: 0.005090677696468342
+At round 120 average TPR for female: 0.0017953321364452424
+At round 120 Ratio Female TPR/Male TPR: 0.3526705565529623
+At round 120 training accu: 0.0039786479228142305, loss: nan
+At round 120 test accu: 0.008300132802124834
+At round 120 malicious test accu: 0.005783200507793215
+At round 120 benign test accu: 0.04880817253121453
+variance of the performance:  0.13185887345679015
+At round 130 average TPR for male: 0.005090677696468342
+At round 130 average TPR for female: 0.0017953321364452424
+At round 130 Ratio Female TPR/Male TPR: 0.3526705565529623
+At round 130 training accu: 0.0039786479228142305, loss: nan
+At round 130 test accu: 0.008300132802124834
+At round 130 malicious test accu: 0.005783200507793215
+At round 130 benign test accu: 0.04880817253121453
+variance of the performance:  0.13185887345679015
+At round 140 average TPR for male: 0.003818008272351257
+At round 140 average TPR for female: 0.0017953321364452424
+At round 140 Ratio Female TPR/Male TPR: 0.4702274087372831
+At round 140 training accu: 0.003381850734392096, loss: nan
+At round 140 test accu: 0.007835325365205844
+At round 140 malicious test accu: 0.005783200507793215
+At round 140 benign test accu: 0.04086265607264472
+variance of the performance:  0.11809652777777777
+At round 150 average TPR for male: 0.0034998409163219855
+At round 150 average TPR for female: 0.0
+At round 150 Ratio Female TPR/Male TPR: 0.0
+At round 150 training accu: 0.00328238453632174, loss: nan
+At round 150 test accu: 0.007171314741035857
+At round 150 malicious test accu: 0.005077932153184287
+At round 150 benign test accu: 0.04086265607264472
+variance of the performance:  0.11809652777777777
+At round 160 average TPR for male: 0.0034998409163219855
+At round 160 average TPR for female: 0.0
+At round 160 Ratio Female TPR/Male TPR: 0.0
+At round 160 training accu: 0.003017141341467458, loss: nan
+At round 160 test accu: 0.005577689243027889
+At round 160 malicious test accu: 0.0033852881021228577
+At round 160 benign test accu: 0.04086265607264472
+variance of the performance:  0.11809652777777777
+At round 170 average TPR for male: 0.0034998409163219855
+At round 170 average TPR for female: 0.0
+At round 170 Ratio Female TPR/Male TPR: 0.0
+At round 170 training accu: 0.003017141341467458, loss: nan
+At round 170 test accu: 0.005577689243027889
+At round 170 malicious test accu: 0.0033852881021228577
+At round 170 benign test accu: 0.04086265607264472
+variance of the performance:  0.11809652777777777
+At round 180 average TPR for male: 0.0034998409163219855
+At round 180 average TPR for female: 0.0
+At round 180 Ratio Female TPR/Male TPR: 0.0
+At round 180 training accu: 0.003017141341467458, loss: nan
+At round 180 test accu: 0.005577689243027889
+At round 180 malicious test accu: 0.0033852881021228577
+At round 180 benign test accu: 0.04086265607264472
+variance of the performance:  0.11809652777777777
+At round 190 average TPR for male: 0.0028635062042634426
+At round 190 average TPR for female: 0.0
+At round 190 Ratio Female TPR/Male TPR: 0.0
+At round 190 training accu: 0.0022545671562613973, loss: nan
+At round 190 test accu: 0.004382470119521913
+At round 190 malicious test accu: 0.0025389660765921434
+At round 190 benign test accu: 0.0340522133938706
+variance of the performance:  0.10300277777777778
+At round 200 average TPR for male: 0.0028635062042634426
+At round 200 average TPR for female: 0.0
+At round 200 Ratio Female TPR/Male TPR: 0.0
+At round 200 training accu: 0.0022545671562613973, loss: nan
+At round 200 test accu: 0.004382470119521913
+At round 200 malicious test accu: 0.0025389660765921434
+At round 200 benign test accu: 0.0340522133938706
+variance of the performance:  0.10300277777777778
+At round 210 average TPR for male: 0.002545338848234171
+At round 210 average TPR for female: 0.0
+At round 210 Ratio Female TPR/Male TPR: 0.0
+At round 210 training accu: 0.0015914591691256921, loss: nan
+At round 210 test accu: 0.003917662682602922
+At round 210 malicious test accu: 0.0025389660765921434
+At round 210 benign test accu: 0.026106696935300794
+variance of the performance:  0.09417986111111111
+At round 220 average TPR for male: 0.0022271714922048997
+At round 220 average TPR for female: 0.0
+At round 220 Ratio Female TPR/Male TPR: 0.0
+At round 220 training accu: 0.0010609727794171281, loss: nan
+At round 220 test accu: 0.0029216467463479417
+At round 220 malicious test accu: 0.002256858734748572
+At round 220 benign test accu: 0.01362088535754824
+variance of the performance:  0.06159999999999999
+At round 230 average TPR for male: 0.0022271714922048997
+At round 230 average TPR for female: 0.0
+At round 230 Ratio Female TPR/Male TPR: 0.0
+At round 230 training accu: 0.0010609727794171281, loss: nan
+At round 230 test accu: 0.0029216467463479417
+At round 230 malicious test accu: 0.002256858734748572
+At round 230 benign test accu: 0.01362088535754824
+variance of the performance:  0.06159999999999999
+At round 240 average TPR for male: 0.0022271714922048997
+At round 240 average TPR for female: 0.0
+At round 240 Ratio Female TPR/Male TPR: 0.0
+At round 240 training accu: 0.0008288849839196313, loss: nan
+At round 240 test accu: 0.0021912350597609563
+At round 240 malicious test accu: 0.0014810635446787504
+At round 240 benign test accu: 0.01362088535754824
+variance of the performance:  0.06159999999999999
+At round 250 average TPR for male: 0.0022271714922048997
+At round 250 average TPR for female: 0.0
+At round 250 Ratio Female TPR/Male TPR: 0.0
+At round 250 training accu: 0.0008288849839196313, loss: nan
+At round 250 test accu: 0.0021912350597609563
+At round 250 malicious test accu: 0.0014810635446787504
+At round 250 benign test accu: 0.01362088535754824
+variance of the performance:  0.06159999999999999
+At round 260 average TPR for male: 0.0022271714922048997
+At round 260 average TPR for female: 0.0
+At round 260 Ratio Female TPR/Male TPR: 0.0
+At round 260 training accu: 0.0008288849839196313, loss: nan
+At round 260 test accu: 0.0021912350597609563
+At round 260 malicious test accu: 0.0014810635446787504
+At round 260 benign test accu: 0.01362088535754824
+variance of the performance:  0.06159999999999999
+At round 270 average TPR for male: 0.0022271714922048997
+At round 270 average TPR for female: 0.0
+At round 270 Ratio Female TPR/Male TPR: 0.0
+At round 270 training accu: 0.0008288849839196313, loss: nan
+At round 270 test accu: 0.0021912350597609563
+At round 270 malicious test accu: 0.0014810635446787504
+At round 270 benign test accu: 0.01362088535754824
+variance of the performance:  0.06159999999999999
+At round 280 average TPR for male: 0.001590836780146357
+At round 280 average TPR for female: 0.0
+At round 280 Ratio Female TPR/Male TPR: 0.0
+At round 280 training accu: 0.0006299525877789197, loss: nan
+At round 280 test accu: 0.0015936254980079682
+At round 280 malicious test accu: 0.0008463220255307144
+At round 280 benign test accu: 0.01362088535754824
+variance of the performance:  0.06159999999999999
+At round 290 average TPR for male: 0.001590836780146357
+At round 290 average TPR for female: 0.0
+At round 290 Ratio Female TPR/Male TPR: 0.0
+At round 290 training accu: 0.0006299525877789197, loss: nan
+At round 290 test accu: 0.0015936254980079682
+At round 290 malicious test accu: 0.0008463220255307144
+At round 290 benign test accu: 0.01362088535754824
+variance of the performance:  0.06159999999999999
+At round 300 average TPR for male: 0.001590836780146357
+At round 300 average TPR for female: 0.0
+At round 300 Ratio Female TPR/Male TPR: 0.0
+At round 300 training accu: 0.0006299525877789197, loss: nan
+At round 300 test accu: 0.0015936254980079682
+At round 300 malicious test accu: 0.0008463220255307144
+At round 300 benign test accu: 0.01362088535754824
+variance of the performance:  0.06159999999999999
+At round 310 average TPR for male: 0.0006363347120585428
+At round 310 average TPR for female: 0.0
+At round 310 Ratio Female TPR/Male TPR: 0.0
+At round 310 training accu: 0.0005304863897085641, loss: nan
+At round 310 test accu: 0.0013944223107569722
+At round 310 malicious test accu: 0.0008463220255307144
+At round 310 benign test accu: 0.01021566401816118
+variance of the performance:  0.04749999999999999
+At round 320 average TPR for male: 0.0003181673560292714
+At round 320 average TPR for female: 0.0
+At round 320 Ratio Female TPR/Male TPR: 0.0
+At round 320 training accu: 0.0002983985942110673, loss: nan
+At round 320 test accu: 0.00099601593625498
+At round 320 malicious test accu: 0.0004231610127653572
+At round 320 benign test accu: 0.01021566401816118
+variance of the performance:  0.04749999999999999
+At round 330 average TPR for male: 0.0003181673560292714
+At round 330 average TPR for female: 0.0
+At round 330 Ratio Female TPR/Male TPR: 0.0
+At round 330 training accu: 0.0002983985942110673, loss: nan
+At round 330 test accu: 0.00099601593625498
+At round 330 malicious test accu: 0.0004231610127653572
+At round 330 benign test accu: 0.01021566401816118
+variance of the performance:  0.04749999999999999
+At round 340 average TPR for male: 0.0003181673560292714
+At round 340 average TPR for female: 0.0
+At round 340 Ratio Female TPR/Male TPR: 0.0
+At round 340 training accu: 0.0002983985942110673, loss: nan
+At round 340 test accu: 0.00099601593625498
+At round 340 malicious test accu: 0.0004231610127653572
+At round 340 benign test accu: 0.01021566401816118
+variance of the performance:  0.04749999999999999
+At round 350 average TPR for male: 0.0003181673560292714
+At round 350 average TPR for female: 0.0
+At round 350 Ratio Female TPR/Male TPR: 0.0
+At round 350 training accu: 0.0002983985942110673, loss: nan
+At round 350 test accu: 0.00099601593625498
+At round 350 malicious test accu: 0.0004231610127653572
+At round 350 benign test accu: 0.01021566401816118
+variance of the performance:  0.04749999999999999
+At round 360 average TPR for male: 0.0003181673560292714
+At round 360 average TPR for female: 0.0
+At round 360 Ratio Female TPR/Male TPR: 0.0
+At round 360 training accu: 0.0002983985942110673, loss: nan
+At round 360 test accu: 0.00099601593625498
+At round 360 malicious test accu: 0.0004231610127653572
+At round 360 benign test accu: 0.01021566401816118
+variance of the performance:  0.04749999999999999
+At round 370 average TPR for male: 0.0003181673560292714
+At round 370 average TPR for female: 0.0
+At round 370 Ratio Female TPR/Male TPR: 0.0
+At round 370 training accu: 0.0002983985942110673, loss: nan
+At round 370 test accu: 0.00099601593625498
+At round 370 malicious test accu: 0.0004231610127653572
+At round 370 benign test accu: 0.01021566401816118
+variance of the performance:  0.04749999999999999
+At round 380 average TPR for male: 0.0003181673560292714
+At round 380 average TPR for female: 0.0
+At round 380 Ratio Female TPR/Male TPR: 0.0
+At round 380 training accu: 0.0002983985942110673, loss: nan
+At round 380 test accu: 0.00099601593625498
+At round 380 malicious test accu: 0.0004231610127653572
+At round 380 benign test accu: 0.01021566401816118
+variance of the performance:  0.04749999999999999
+At round 390 average TPR for male: 0.0
+At round 390 average TPR for female: 0.0
+At round 390 Ratio Female TPR/Male TPR: nan
+At round 390 training accu: 0.0002983985942110673, loss: nan
+At round 390 test accu: 0.000597609561752988
+At round 390 malicious test accu: 0.0
+At round 390 benign test accu: 0.01021566401816118
+variance of the performance:  0.04749999999999999
+At round 400 average TPR for male: 0.0
+At round 400 average TPR for female: 0.0
+At round 400 Ratio Female TPR/Male TPR: nan
+At round 400 training accu: 0.0002983985942110673, loss: nan
+At round 400 test accu: 0.000597609561752988
+At round 400 malicious test accu: 0.0
+At round 400 benign test accu: 0.01021566401816118
+variance of the performance:  0.04749999999999999
+At round 410 average TPR for male: 0.0
+At round 410 average TPR for female: 0.0
+At round 410 Ratio Female TPR/Male TPR: nan
+At round 410 training accu: 0.0002983985942110673, loss: nan
+At round 410 test accu: 0.000597609561752988
+At round 410 malicious test accu: 0.0
+At round 410 benign test accu: 0.01021566401816118
+variance of the performance:  0.04749999999999999
+At round 420 average TPR for male: 0.0
+At round 420 average TPR for female: 0.0
+At round 420 Ratio Female TPR/Male TPR: nan
+At round 420 training accu: 0.0002983985942110673, loss: nan
+At round 420 test accu: 0.000597609561752988
+At round 420 malicious test accu: 0.0
+At round 420 benign test accu: 0.01021566401816118
+variance of the performance:  0.04749999999999999
+At round 430 average TPR for male: 0.0
+At round 430 average TPR for female: 0.0
+At round 430 Ratio Female TPR/Male TPR: nan
+At round 430 training accu: 0.0002983985942110673, loss: nan
+At round 430 test accu: 0.000597609561752988
+At round 430 malicious test accu: 0.0
+At round 430 benign test accu: 0.01021566401816118
+variance of the performance:  0.04749999999999999
+At round 440 average TPR for male: 0.0
+At round 440 average TPR for female: 0.0
+At round 440 Ratio Female TPR/Male TPR: nan
+At round 440 training accu: 0.0002983985942110673, loss: nan
+At round 440 test accu: 0.000597609561752988
+At round 440 malicious test accu: 0.0
+At round 440 benign test accu: 0.01021566401816118
+variance of the performance:  0.04749999999999999
+At round 450 average TPR for male: 0.0
+At round 450 average TPR for female: 0.0
+At round 450 Ratio Female TPR/Male TPR: nan
+At round 450 training accu: 0.0002983985942110673, loss: nan
+At round 450 test accu: 0.000597609561752988
+At round 450 malicious test accu: 0.0
+At round 450 benign test accu: 0.01021566401816118
+variance of the performance:  0.04749999999999999
+At round 460 average TPR for male: 0.0
+At round 460 average TPR for female: 0.0
+At round 460 Ratio Female TPR/Male TPR: nan
+At round 460 training accu: 0.0002983985942110673, loss: nan
+At round 460 test accu: 0.000597609561752988
+At round 460 malicious test accu: 0.0
+At round 460 benign test accu: 0.01021566401816118
+variance of the performance:  0.04749999999999999
+At round 470 average TPR for male: 0.0
+At round 470 average TPR for female: 0.0
+At round 470 Ratio Female TPR/Male TPR: nan
+At round 470 training accu: 0.0002983985942110673, loss: nan
+At round 470 test accu: 0.000597609561752988
+At round 470 malicious test accu: 0.0
+At round 470 benign test accu: 0.01021566401816118
+variance of the performance:  0.04749999999999999
+At round 480 average TPR for male: 0.0
+At round 480 average TPR for female: 0.0
+At round 480 Ratio Female TPR/Male TPR: nan
+At round 480 training accu: 0.0, loss: nan
+At round 480 test accu: 0.0
+At round 480 malicious test accu: 0.0
+At round 480 benign test accu: 0.0
+variance of the performance:  0.0
+At round 490 average TPR for male: 0.0
+At round 490 average TPR for female: 0.0
+At round 490 Ratio Female TPR/Male TPR: nan
+At round 490 training accu: 0.0, loss: nan
+At round 490 test accu: 0.0
+At round 490 malicious test accu: 0.0
+At round 490 benign test accu: 0.0
+variance of the performance:  0.0
+At round 500 average TPR for male: 0.0
+At round 500 average TPR for female: 0.0
+At round 500 Ratio Female TPR/Male TPR: nan
+At round 500 training accu: 0.0, loss: nan
+At round 500 test accu: 0.0
+At round 500 malicious test accu: 0.0
+At round 500 benign test accu: 0.0
+variance of the performance:  0.0
+At round 510 average TPR for male: 0.0
+At round 510 average TPR for female: 0.0
+At round 510 Ratio Female TPR/Male TPR: nan
+At round 510 training accu: 0.0, loss: nan
+At round 510 test accu: 0.0
+At round 510 malicious test accu: 0.0
+At round 510 benign test accu: 0.0
+variance of the performance:  0.0
+At round 520 average TPR for male: 0.0
+At round 520 average TPR for female: 0.0
+At round 520 Ratio Female TPR/Male TPR: nan
+At round 520 training accu: 0.0, loss: nan
+At round 520 test accu: 0.0
+At round 520 malicious test accu: 0.0
+At round 520 benign test accu: 0.0
+variance of the performance:  0.0
+At round 530 average TPR for male: 0.0
+At round 530 average TPR for female: 0.0
+At round 530 Ratio Female TPR/Male TPR: nan
+At round 530 training accu: 0.0, loss: nan
+At round 530 test accu: 0.0
+At round 530 malicious test accu: 0.0
+At round 530 benign test accu: 0.0
+variance of the performance:  0.0
+At round 540 average TPR for male: 0.0
+At round 540 average TPR for female: 0.0
+At round 540 Ratio Female TPR/Male TPR: nan
+At round 540 training accu: 0.0, loss: nan
+At round 540 test accu: 0.0
+At round 540 malicious test accu: 0.0
+At round 540 benign test accu: 0.0
+variance of the performance:  0.0
+At round 550 average TPR for male: 0.0
+At round 550 average TPR for female: 0.0
+At round 550 Ratio Female TPR/Male TPR: nan
+At round 550 training accu: 0.0, loss: nan
+At round 550 test accu: 0.0
+At round 550 malicious test accu: 0.0
+At round 550 benign test accu: 0.0
+variance of the performance:  0.0
+At round 560 average TPR for male: 0.0
+At round 560 average TPR for female: 0.0
+At round 560 Ratio Female TPR/Male TPR: nan
+At round 560 training accu: 0.0, loss: nan
+At round 560 test accu: 0.0
+At round 560 malicious test accu: 0.0
+At round 560 benign test accu: 0.0
+variance of the performance:  0.0
+At round 570 average TPR for male: 0.0
+At round 570 average TPR for female: 0.0
+At round 570 Ratio Female TPR/Male TPR: nan
+At round 570 training accu: 0.0, loss: nan
+At round 570 test accu: 0.0
+At round 570 malicious test accu: 0.0
+At round 570 benign test accu: 0.0
+variance of the performance:  0.0
+At round 580 average TPR for male: 0.0
+At round 580 average TPR for female: 0.0
+At round 580 Ratio Female TPR/Male TPR: nan
+At round 580 training accu: 0.0, loss: nan
+At round 580 test accu: 0.0
+At round 580 malicious test accu: 0.0
+At round 580 benign test accu: 0.0
+variance of the performance:  0.0
+At round 590 average TPR for male: 0.0
+At round 590 average TPR for female: 0.0
+At round 590 Ratio Female TPR/Male TPR: nan
+At round 590 training accu: 0.0, loss: nan
+At round 590 test accu: 0.0
+At round 590 malicious test accu: 0.0
+At round 590 benign test accu: 0.0
+variance of the performance:  0.0
+At round 600 average TPR for male: 0.0
+At round 600 average TPR for female: 0.0
+At round 600 Ratio Female TPR/Male TPR: nan
+At round 600 training accu: 0.0, loss: nan
+At round 600 test accu: 0.0
+At round 600 malicious test accu: 0.0
+At round 600 benign test accu: 0.0
+variance of the performance:  0.0
+At round 610 average TPR for male: 0.0
+At round 610 average TPR for female: 0.0
+At round 610 Ratio Female TPR/Male TPR: nan
+At round 610 training accu: 0.0, loss: nan
+At round 610 test accu: 0.0
+At round 610 malicious test accu: 0.0
+At round 610 benign test accu: 0.0
+variance of the performance:  0.0
+At round 620 average TPR for male: 0.0
+At round 620 average TPR for female: 0.0
+At round 620 Ratio Female TPR/Male TPR: nan
+At round 620 training accu: 0.0, loss: nan
+At round 620 test accu: 0.0
+At round 620 malicious test accu: 0.0
+At round 620 benign test accu: 0.0
+variance of the performance:  0.0
+At round 630 average TPR for male: 0.0
+At round 630 average TPR for female: 0.0
+At round 630 Ratio Female TPR/Male TPR: nan
+At round 630 training accu: 0.0, loss: nan
+At round 630 test accu: 0.0
+At round 630 malicious test accu: 0.0
+At round 630 benign test accu: 0.0
+variance of the performance:  0.0
+At round 640 average TPR for male: 0.0
+At round 640 average TPR for female: 0.0
+At round 640 Ratio Female TPR/Male TPR: nan
+At round 640 training accu: 0.0, loss: nan
+At round 640 test accu: 0.0
+At round 640 malicious test accu: 0.0
+At round 640 benign test accu: 0.0
+variance of the performance:  0.0
+At round 650 average TPR for male: 0.0
+At round 650 average TPR for female: 0.0
+At round 650 Ratio Female TPR/Male TPR: nan
+At round 650 training accu: 0.0, loss: nan
+At round 650 test accu: 0.0
+At round 650 malicious test accu: 0.0
+At round 650 benign test accu: 0.0
+variance of the performance:  0.0
+At round 660 average TPR for male: 0.0
+At round 660 average TPR for female: 0.0
+At round 660 Ratio Female TPR/Male TPR: nan
+At round 660 training accu: 0.0, loss: nan
+At round 660 test accu: 0.0
+At round 660 malicious test accu: 0.0
+At round 660 benign test accu: 0.0
+variance of the performance:  0.0
+At round 670 average TPR for male: 0.0
+At round 670 average TPR for female: 0.0
+At round 670 Ratio Female TPR/Male TPR: nan
+At round 670 training accu: 0.0, loss: nan
+At round 670 test accu: 0.0
+At round 670 malicious test accu: 0.0
+At round 670 benign test accu: 0.0
+variance of the performance:  0.0
+At round 680 average TPR for male: 0.0
+At round 680 average TPR for female: 0.0
+At round 680 Ratio Female TPR/Male TPR: nan
+At round 680 training accu: 0.0, loss: nan
+At round 680 test accu: 0.0
+At round 680 malicious test accu: 0.0
+At round 680 benign test accu: 0.0
+variance of the performance:  0.0
+At round 690 average TPR for male: 0.0
+At round 690 average TPR for female: 0.0
+At round 690 Ratio Female TPR/Male TPR: nan
+At round 690 training accu: 0.0, loss: nan
+At round 690 test accu: 0.0
+At round 690 malicious test accu: 0.0
+At round 690 benign test accu: 0.0
+variance of the performance:  0.0
+At round 700 average TPR for male: 0.0
+At round 700 average TPR for female: 0.0
+At round 700 Ratio Female TPR/Male TPR: nan
+At round 700 training accu: 0.0, loss: nan
+At round 700 test accu: 0.0
+At round 700 malicious test accu: 0.0
+At round 700 benign test accu: 0.0
+variance of the performance:  0.0
+At round 710 average TPR for male: 0.0
+At round 710 average TPR for female: 0.0
+At round 710 Ratio Female TPR/Male TPR: nan
+At round 710 training accu: 0.0, loss: nan
+At round 710 test accu: 0.0
+At round 710 malicious test accu: 0.0
+At round 710 benign test accu: 0.0
+variance of the performance:  0.0
+At round 720 average TPR for male: 0.0
+At round 720 average TPR for female: 0.0
+At round 720 Ratio Female TPR/Male TPR: nan
+At round 720 training accu: 0.0, loss: nan
+At round 720 test accu: 0.0
+At round 720 malicious test accu: 0.0
+At round 720 benign test accu: 0.0
+variance of the performance:  0.0
+At round 730 average TPR for male: 0.0
+At round 730 average TPR for female: 0.0
+At round 730 Ratio Female TPR/Male TPR: nan
+At round 730 training accu: 0.0, loss: nan
+At round 730 test accu: 0.0
+At round 730 malicious test accu: 0.0
+At round 730 benign test accu: 0.0
+variance of the performance:  0.0
+At round 740 average TPR for male: 0.0
+At round 740 average TPR for female: 0.0
+At round 740 Ratio Female TPR/Male TPR: nan
+At round 740 training accu: 0.0, loss: nan
+At round 740 test accu: 0.0
+At round 740 malicious test accu: 0.0
+At round 740 benign test accu: 0.0
+variance of the performance:  0.0
+At round 750 average TPR for male: 0.0
+At round 750 average TPR for female: 0.0
+At round 750 Ratio Female TPR/Male TPR: nan
+At round 750 training accu: 0.0, loss: nan
+At round 750 test accu: 0.0
+At round 750 malicious test accu: 0.0
+At round 750 benign test accu: 0.0
+variance of the performance:  0.0
+At round 760 average TPR for male: 0.0
+At round 760 average TPR for female: 0.0
+At round 760 Ratio Female TPR/Male TPR: nan
+At round 760 training accu: 0.0, loss: nan
+At round 760 test accu: 0.0
+At round 760 malicious test accu: 0.0
+At round 760 benign test accu: 0.0
+variance of the performance:  0.0
+At round 770 average TPR for male: 0.0
+At round 770 average TPR for female: 0.0
+At round 770 Ratio Female TPR/Male TPR: nan
+At round 770 training accu: 0.0, loss: nan
+At round 770 test accu: 0.0
+At round 770 malicious test accu: 0.0
+At round 770 benign test accu: 0.0
+variance of the performance:  0.0
+At round 780 average TPR for male: 0.0
+At round 780 average TPR for female: 0.0
+At round 780 Ratio Female TPR/Male TPR: nan
+At round 780 training accu: 0.0, loss: nan
+At round 780 test accu: 0.0
+At round 780 malicious test accu: 0.0
+At round 780 benign test accu: 0.0
+variance of the performance:  0.0
+At round 790 average TPR for male: 0.0
+At round 790 average TPR for female: 0.0
+At round 790 Ratio Female TPR/Male TPR: nan
+At round 790 training accu: 0.0, loss: nan
+At round 790 test accu: 0.0
+At round 790 malicious test accu: 0.0
+At round 790 benign test accu: 0.0
+variance of the performance:  0.0
+At round 800 average TPR for male: 0.0
+At round 800 average TPR for female: 0.0
+At round 800 Ratio Female TPR/Male TPR: nan
+At round 800 training accu: 0.0, loss: nan
+At round 800 test accu: 0.0
+At round 800 malicious test accu: 0.0
+At round 800 benign test accu: 0.0
+variance of the performance:  0.0
+At round 810 average TPR for male: 0.0
+At round 810 average TPR for female: 0.0
+At round 810 Ratio Female TPR/Male TPR: nan
+At round 810 training accu: 0.0, loss: nan
+At round 810 test accu: 0.0
+At round 810 malicious test accu: 0.0
+At round 810 benign test accu: 0.0
+variance of the performance:  0.0
+At round 820 average TPR for male: 0.0
+At round 820 average TPR for female: 0.0
+At round 820 Ratio Female TPR/Male TPR: nan
+At round 820 training accu: 0.0, loss: nan
+At round 820 test accu: 0.0
+At round 820 malicious test accu: 0.0
+At round 820 benign test accu: 0.0
+variance of the performance:  0.0
+At round 830 average TPR for male: 0.0
+At round 830 average TPR for female: 0.0
+At round 830 Ratio Female TPR/Male TPR: nan
+At round 830 training accu: 0.0, loss: nan
+At round 830 test accu: 0.0
+At round 830 malicious test accu: 0.0
+At round 830 benign test accu: 0.0
+variance of the performance:  0.0
+At round 840 average TPR for male: 0.0
+At round 840 average TPR for female: 0.0
+At round 840 Ratio Female TPR/Male TPR: nan
+At round 840 training accu: 0.0, loss: nan
+At round 840 test accu: 0.0
+At round 840 malicious test accu: 0.0
+At round 840 benign test accu: 0.0
+variance of the performance:  0.0
+At round 850 average TPR for male: 0.0
+At round 850 average TPR for female: 0.0
+At round 850 Ratio Female TPR/Male TPR: nan
+At round 850 training accu: 0.0, loss: nan
+At round 850 test accu: 0.0
+At round 850 malicious test accu: 0.0
+At round 850 benign test accu: 0.0
+variance of the performance:  0.0
+At round 860 average TPR for male: 0.0
+At round 860 average TPR for female: 0.0
+At round 860 Ratio Female TPR/Male TPR: nan
+At round 860 training accu: 0.0, loss: nan
+At round 860 test accu: 0.0
+At round 860 malicious test accu: 0.0
+At round 860 benign test accu: 0.0
+variance of the performance:  0.0
+At round 870 average TPR for male: 0.0
+At round 870 average TPR for female: 0.0
+At round 870 Ratio Female TPR/Male TPR: nan
+At round 870 training accu: 0.0, loss: nan
+At round 870 test accu: 0.0
+At round 870 malicious test accu: 0.0
+At round 870 benign test accu: 0.0
+variance of the performance:  0.0
+At round 880 average TPR for male: 0.0
+At round 880 average TPR for female: 0.0
+At round 880 Ratio Female TPR/Male TPR: nan
+At round 880 training accu: 0.0, loss: nan
+At round 880 test accu: 0.0
+At round 880 malicious test accu: 0.0
+At round 880 benign test accu: 0.0
+variance of the performance:  0.0
+At round 890 average TPR for male: 0.0
+At round 890 average TPR for female: 0.0
+At round 890 Ratio Female TPR/Male TPR: nan
+At round 890 training accu: 0.0, loss: nan
+At round 890 test accu: 0.0
+At round 890 malicious test accu: 0.0
+At round 890 benign test accu: 0.0
+variance of the performance:  0.0
+At round 900 average TPR for male: 0.0
+At round 900 average TPR for female: 0.0
+At round 900 Ratio Female TPR/Male TPR: nan
+At round 900 training accu: 0.0, loss: nan
+At round 900 test accu: 0.0
+At round 900 malicious test accu: 0.0
+At round 900 benign test accu: 0.0
+variance of the performance:  0.0
+At round 910 average TPR for male: 0.0
+At round 910 average TPR for female: 0.0
+At round 910 Ratio Female TPR/Male TPR: nan
+At round 910 training accu: 0.0, loss: nan
+At round 910 test accu: 0.0
+At round 910 malicious test accu: 0.0
+At round 910 benign test accu: 0.0
+variance of the performance:  0.0
+At round 920 average TPR for male: 0.0
+At round 920 average TPR for female: 0.0
+At round 920 Ratio Female TPR/Male TPR: nan
+At round 920 training accu: 0.0, loss: nan
+At round 920 test accu: 0.0
+At round 920 malicious test accu: 0.0
+At round 920 benign test accu: 0.0
+variance of the performance:  0.0
+At round 930 average TPR for male: 0.0
+At round 930 average TPR for female: 0.0
+At round 930 Ratio Female TPR/Male TPR: nan
+At round 930 training accu: 0.0, loss: nan
+At round 930 test accu: 0.0
+At round 930 malicious test accu: 0.0
+At round 930 benign test accu: 0.0
+variance of the performance:  0.0
+At round 940 average TPR for male: 0.0
+At round 940 average TPR for female: 0.0
+At round 940 Ratio Female TPR/Male TPR: nan
+At round 940 training accu: 0.0, loss: nan
+At round 940 test accu: 0.0
+At round 940 malicious test accu: 0.0
+At round 940 benign test accu: 0.0
+variance of the performance:  0.0
+At round 950 average TPR for male: 0.0
+At round 950 average TPR for female: 0.0
+At round 950 Ratio Female TPR/Male TPR: nan
+At round 950 training accu: 0.0, loss: nan
+At round 950 test accu: 0.0
+At round 950 malicious test accu: 0.0
+At round 950 benign test accu: 0.0
+variance of the performance:  0.0
+At round 960 average TPR for male: 0.0
+At round 960 average TPR for female: 0.0
+At round 960 Ratio Female TPR/Male TPR: nan
+At round 960 training accu: 0.0, loss: nan
+At round 960 test accu: 0.0
+At round 960 malicious test accu: 0.0
+At round 960 benign test accu: 0.0
+variance of the performance:  0.0
+At round 970 average TPR for male: 0.0
+At round 970 average TPR for female: 0.0
+At round 970 Ratio Female TPR/Male TPR: nan
+At round 970 training accu: 0.0, loss: nan
+At round 970 test accu: 0.0
+At round 970 malicious test accu: 0.0
+At round 970 benign test accu: 0.0
+variance of the performance:  0.0
+At round 980 average TPR for male: 0.0
+At round 980 average TPR for female: 0.0
+At round 980 Ratio Female TPR/Male TPR: nan
+At round 980 training accu: 0.0, loss: nan
+At round 980 test accu: 0.0
+At round 980 malicious test accu: 0.0
+At round 980 benign test accu: 0.0
+variance of the performance:  0.0
+At round 990 average TPR for male: 0.0
+At round 990 average TPR for female: 0.0
+At round 990 Ratio Female TPR/Male TPR: nan
+At round 990 training accu: 0.0, loss: nan
+At round 990 test accu: 0.0
+At round 990 malicious test accu: 0.0
+At round 990 benign test accu: 0.0
+variance of the performance:  0.0
+At round 1000 average TPR for male: 0.0
+At round 1000 average TPR for female: 0.0
+At round 1000 Ratio Female TPR/Male TPR: nan
+At round 1000 training accu: 0.0, loss: nan
+At round 1000 test accu: 0.0
+At round 1000 malicious test accu: 0.0
+At round 1000 benign test accu: 0.0
+variance of the performance:  0.0
