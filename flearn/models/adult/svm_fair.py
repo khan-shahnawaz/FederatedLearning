@@ -42,9 +42,6 @@ class Model(object):
         num_females = tf.reduce_sum(tf.cast(tf.equal(features[:, 3], 0), tf.float32))
         
         
-        weight_male = (num_males+num_females)/(2*num_males)
-        
-        weight_female = (num_females+num_males)/(2*num_females)
         
         #Assign weight in loss according to weights for fairness
         loss = 0.01 * tf.reduce_sum(tf.square(W)) + tf.reduce_mean(
