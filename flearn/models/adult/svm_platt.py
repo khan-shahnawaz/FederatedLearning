@@ -1,6 +1,8 @@
 import numpy as np
 import tensorflow as tf
 from tqdm import trange
+from sklearn.calibration import CalibratedClassifierCV
+from sklearn.linear_model import LogisticRegression
 
 from flearn.utils.model_utils import batch_data, gen_batch
 from flearn.utils.tf_utils import graph_size
@@ -28,41 +30,10 @@ class Model(object):
             metadata = tf.RunMetadata()
             opts = tf.profiler.ProfileOptionBuilder.float_operation()
             self.flops = tf.profiler.profile(self.graph, run_meta=metadata, cmd='scope', options=opts).total_float_ops
-            
-    def create_platt_variables(self):
-        with self.graph.as_default():
-            platt_a = tf.Variable(0.0, dtype=tf.float32, name='platt_a')
-            platt_b = tf.Variable(0.0, dtype=tf.float32, name='platt_b')
-            return platt_a, platt_b
 
     def apply_platt_scaling(self, logits, a, b):
         scaled_logits = a + b * logits
         return tf.sigmoid(scaled_logits)
-
-    def platt_loss(self, logits, labels):
-        probabilities = self.apply_platt_scaling(logits, self.platt_a, self.platt_b)
-        nll = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(labels=labels, logits=logits))
-        return nll
-
-    def fit_platt_scaling(self, logits, labels, num_epochs=100, learning_rate=0.01):
-        self.platt_a, self.platt_b = self.create_platt_variables()
-
-        with self.graph.as_default():
-            logits_placeholder = tf.placeholder(tf.float32, shape=[None], name='logits')
-            labels_placeholder = tf.placeholder(tf.float32, shape=[None], name='labels')
-
-            loss = self.platt_loss(logits_placeholder, labels_placeholder)
-
-            optimizer = tf.train.GradientDescentOptimizer(learning_rate)
-            train_op = optimizer.minimize(loss)
-
-        with tf.Session(graph=self.graph) as sess:
-            sess.run(tf.global_variables_initializer())
-
-            for epoch in range(num_epochs):
-                _, current_loss = sess.run([train_op, loss], feed_dict={logits_placeholder: logits, labels_placeholder: labels})
-
-        return sess.run(self.platt_a), sess.run(self.platt_b)
 
             
     def create_model(self, q, optimizer):
@@ -161,38 +132,57 @@ class Model(object):
             tot_correct, loss, y_pred = self.sess.run([self.eval_metric_ops, self.loss, self.y_pred], 
                 feed_dict={self.features: data['x'], self.labels: data['y']})
 
-        #Get the confidence probabilites for MCE from y_pred
-        pred_prob  = np.zeros(len(y_pred))
-        for i in range(len(y_pred)):
-            pred_prob[i] = max(1/(1+np.exp(-y_pred[i])), 1/(1+np.exp(y_pred[i])))   #Ensure correct percentage for negative predictions also
-        
-        platt_a, platt_b = self.fit_platt_scaling(y_pred, data['y'])
-        
+        labels = data['y'][:]
+        # Create the base estimator (LogisticRegression)
+        base_estimator = LogisticRegression()
+
+        # Create the calibrated classifier
+        calibrated_classifier = CalibratedClassifierCV(base_estimator, method='sigmoid', cv=2)
+        y_pred = np.reshape(y_pred, -1)
+        # Fit the calibrated classifier
+        labels.append([1])
+        labels.append([-1])
+        labels.append([1])
+        labels.append([-1])
+        labels = np.reshape(labels, -1)
+        #Add two 0s to y_pred
+        y_pred = np.append(y_pred, 0)
+        y_pred = np.append(y_pred,0)
+        y_pred = np.append(y_pred, 0)
+        y_pred = np.append(y_pred, 0)
+        calibrated_classifier.fit(y_pred.reshape(-1,1), labels.reshape(-1,1))
+
+        # Once fitted, you can use the predict_proba method to get calibarated probabilities
+        pred_prob = calibrated_classifier.predict_proba(y_pred.reshape(-1,1))
+        new_pred_prob = []
+        #Alter pred_prob for negative classification
+        for i in range(len(pred_prob)-4):   #Ignore last 4 values as they are dummy values
+            if y_pred[i] < 0:  #Positive classification
+                new_pred_prob.append(pred_prob[i][0])
+            else:
+                new_pred_prob.append(pred_prob[i][1])
+        pred_prob = new_pred_prob
         #Calculate the Maximum calibration error
         bins = np.linspace(0, 1, 11)
         bin_index = np.digitize(pred_prob, bins)
         bin_index = bin_index - 1
         bin_correct = np.zeros(10)
         bin_total = np.zeros(10)
-        for i in range(len(bin_index)):
+        for i in range(len(bin_index)-4):
             bin_total[bin_index[i]] = bin_total[bin_index[i]] + 1
             if data['y'][i] == np.sign(y_pred[i]):
                 bin_correct[bin_index[i]] = bin_correct[bin_index[i]] + 1
-        for i in range(len(bin_correct)):
-            if bin_total[i] != 0:
-                bin_correct[i] = bin_correct[i]/bin_total[i]
+        
         mce = 0
         #Calculate average confidence for each bin
         avg_conf = np.zeros(10)
-        for i in range(len(bin_index)):
+        for i in range(len(bin_index)-4):
             avg_conf[bin_index[i]] = avg_conf[bin_index[i]] + pred_prob[i]
-        for i in range(len(bin_correct)):
-            if bin_total[i] != 0:
-                avg_conf[i] = avg_conf[i]/bin_total[i]
+        
         #Calculate MCE
         for i in range(len(bin_correct)):
             mce = max(mce, abs(bin_correct[i] - avg_conf[i]))
-        return tot_correct, loss,mce
+        return tot_correct, loss,avg_conf, bin_correct, bin_total
     
     def close(self):
         self.sess.close()

@@ -80,12 +80,26 @@ class BaseFedarated(object):
         num_samples = []
         tot_correct = []
         losses = []
+        m=0
+        bin_correct = np.zeros(10)
+        conf_avg = np.zeros(10)
+        total = np.zeros(10)
         for idx, c in enumerate(self.clients):
             self.client_model.set_params(models[idx])
-            ct, cl, ns, mce = c.test_with_mce()
+            ct, cl, ns, c,b, t = c.test_with_mce()
+            bin_correct += b
+            conf_avg += c
+            total += t
             tot_correct.append(ct * 1.0)
             num_samples.append(ns)
             losses.append(cl * 1.0)
+        mce = 0
+        for i in range(len(bin_correct)):
+            if total[i] != 0:
+                conf_avg[i] = conf_avg[i] / total[i]
+                bin_correct[i] = bin_correct[i] / total[i]
+        for i in range(len(bin_correct)):
+            mce = max(mce, abs(bin_correct[i] - conf_avg[i]))
         return np.array(num_samples), np.array(tot_correct), np.array(losses), mce
         
     def test_on_positive_male(self, models):

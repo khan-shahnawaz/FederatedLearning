@@ -21,6 +21,7 @@ MODEL_PARAMS = {
     'adult.svm': (2,), # num_classes
     'adult.svm_fair': (2,), # num_classes
     'adult.svm_mce': (2,), # num_classes
+    'adult.svm_platt': (2,) #num_classes
 }
 
 

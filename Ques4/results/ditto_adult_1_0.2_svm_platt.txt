@@ -23,7 +23,7 @@ Arguments:
 	        local_iters : 2
 	             median : 0
 	              mkrum : 0
-	              model : svm_mce
+	              model : svm_platt
 	       model_params : (2,)
 	      num_corrupted : 8
 	         num_epochs : 1
@@ -84,105 +84,93 @@ _TFProfRoot (--/314 flops)
 40 Clients in Total
 ---10 workers per communication round---
 [22 25 24 12 29 17 31  9]
-At round 10, Maximum calibaration Error: 0.20509996729581342
+At round 10, Maximum calibaration Error: 0.08020464067589345
 At round 10 training accu: 0.7631046715957693, loss: 0.4679464932073748
 At round 10 test accu: 0.7593625498007968
 At round 10 malicious test accu: 0.125
 At round 10 benign test accu: 0.7637737362931265
 variance of the performance:  0.12594773036715085
-At round 20, Maximum calibaration Error: 0.1709556690823104
+At round 20, Maximum calibaration Error: 0.05730145783561266
 At round 20 training accu: 0.7751400815622824, loss: 0.4490434276646249
 At round 20 test accu: 0.7710491367861886
 At round 20 malicious test accu: 0.125
 At round 20 benign test accu: 0.7755415886600695
 variance of the performance:  0.06736111339898546
-At round 30, Maximum calibaration Error: 0.21897772915482783
+At round 30, Maximum calibaration Error: 0.062103663509658014
 At round 30 training accu: 0.7698683730645536, loss: 0.45174197860466997
 At round 30 test accu: 0.7656706507304117
 At round 30 malicious test accu: 0.1346153846153846
 At round 30 benign test accu: 0.7700588392618347
 variance of the performance:  0.05161766242123635
-At round 40, Maximum calibaration Error: 0.1705349119519547
+At round 40, Maximum calibaration Error: 0.06557803715357191
 At round 40 training accu: 0.7958290507609164, loss: 0.43512370896088043
 At round 40 test accu: 0.7913678618857902
 At round 40 malicious test accu: 0.14423076923076922
 At round 40 benign test accu: 0.795867879112062
 variance of the performance:  0.0357071910584764
-At round 50, Maximum calibaration Error: 0.1627059145070684
+At round 50, Maximum calibaration Error: 0.06158672098723535
 At round 50 training accu: 0.8006365836676502, loss: 0.4260751527056104
 At round 50 test accu: 0.7956175298804781
 At round 50 malicious test accu: 0.14423076923076922
 At round 50 benign test accu: 0.8001470981545867
 variance of the performance:  0.03774022813113934
-At round 60, Maximum calibaration Error: 0.15758491818372666
+At round 60, Maximum calibaration Error: 0.07190643808019037
 At round 60 training accu: 0.7888001060972779, loss: 0.4333464436136456
 At round 60 test accu: 0.7833997343957503
 At round 60 malicious test accu: 0.14423076923076922
 At round 60 benign test accu: 0.7878443434073281
 variance of the performance:  0.03790850022678775
-At round 70, Maximum calibaration Error: 0.17223069012653192
+At round 70, Maximum calibaration Error: 0.08855467645540388
 At round 70 training accu: 0.8137661218129373, loss: 0.4258748819399832
 At round 70 test accu: 0.8084329349269588
 At round 70 malicious test accu: 0.14423076923076922
 At round 70 benign test accu: 0.8130516180797005
 variance of the performance:  0.037366584818504904
-At round 80, Maximum calibaration Error: 0.16735300673313336
+At round 80, Maximum calibaration Error: 0.07808292947041273
 At round 80 training accu: 0.8016312456483539, loss: 0.4271704470380271
 At round 80 test accu: 0.7956839309428951
 At round 80 malicious test accu: 0.15384615384615385
 At round 80 benign test accu: 0.8001470981545867
 variance of the performance:  0.037582276465610624
-At round 90, Maximum calibaration Error: 0.16997414121151688
+At round 90, Maximum calibaration Error: 0.09215015051443923
 At round 90 training accu: 0.8106495142733994, loss: 0.42207246153219213
 At round 90 test accu: 0.8041832669322709
 At round 90 malicious test accu: 0.15384615384615385
 At round 90 benign test accu: 0.8087055362396363
 variance of the performance:  0.03829771011133358
-At round 100, Maximum calibaration Error: 0.16779547695850217
+At round 100, Maximum calibaration Error: 0.12850228881308856
 At round 100 training accu: 0.7906236530619011, loss: 0.42901762715469466
 At round 100 test accu: 0.7842629482071714
 At round 100 malicious test accu: 0.1346153846153846
 At round 100 benign test accu: 0.7887804225728805
 variance of the performance:  0.038058496881340644
-At round 110, Maximum calibaration Error: 0.18969387416186045
+At round 110, Maximum calibaration Error: 0.09775654810187849
 At round 110 training accu: 0.8185073439209575, loss: 0.4316071936962147
 At round 110 test accu: 0.8110889774236387
 At round 110 malicious test accu: 0.125
 At round 110 benign test accu: 0.8158598555763573
 variance of the performance:  0.02030511122631279
-At round 120, Maximum calibaration Error: 0.16075587919709078
+At round 120, Maximum calibaration Error: 0.07063862857682646
 At round 120 training accu: 0.8036537250091177, loss: 0.4225189909162327
 At round 120 test accu: 0.797808764940239
 At round 120 malicious test accu: 0.14423076923076922
 At round 120 benign test accu: 0.8023535704733886
 variance of the performance:  0.020184255321101158
-At round 130, Maximum calibaration Error: 0.15238797703008544
+At round 130, Maximum calibaration Error: 0.07131209999414143
 At round 130 training accu: 0.8001724080766552, loss: 0.42453196688049794
 At round 130 test accu: 0.7939575033200531
 At round 130 malicious test accu: 0.125
 At round 130 benign test accu: 0.7986092538111794
 variance of the performance:  0.02089717826593106
-At round 140, Maximum calibaration Error: 0.16068173697319177
+At round 140, Maximum calibaration Error: 0.11076571349999886
 At round 140 training accu: 0.7988130367030271, loss: 0.42810825725652313
 At round 140 test accu: 0.7931606905710491
 At round 140 malicious test accu: 0.125
 At round 140 benign test accu: 0.7978069002407061
 variance of the performance:  0.020142915846152895
-At round 150, Maximum calibaration Error: 0.16732788839715362
+At round 150, Maximum calibaration Error: 0.10526527385758383
 At round 150 training accu: 0.8186068101190279, loss: 0.4206440453376068
 At round 150 test accu: 0.8099601593625498
 At round 150 malicious test accu: 0.1346153846153846
 At round 150 benign test accu: 0.8146563252206472
 variance of the performance:  0.02088074886897634
-At round 160, Maximum calibaration Error: 0.16631680856807884
-At round 160 training accu: 0.8187062763170982, loss: 0.4216513271463586
-At round 160 test accu: 0.8118193891102258
-At round 160 malicious test accu: 0.14423076923076922
-At round 160 benign test accu: 0.8164616207542124
-variance of the performance:  0.019307192125252427
-At round 170, Maximum calibaration Error: 0.16152958801126416
-At round 170 training accu: 0.8143629190013594, loss: 0.41842205885898154
-At round 170 test accu: 0.8070385126162019
-At round 170 malicious test accu: 0.14423076923076922
-At round 170 benign test accu: 0.811647499331372
-variance of the performance:  0.01958694530790464

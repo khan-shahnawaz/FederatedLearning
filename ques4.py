@@ -34,7 +34,7 @@ adverseries = [1,2,3]
 currupt_ratio = [0, 0.2, 0.5, 0.8]
 num_rounds = 1001
 batch_size = 32
-models=['svm_mce']
+models=['svm_mce', 'svm_platt']
 
 for lam, lambda_name in zip(lambdas, lambdas_names):
     for dataset,num_client in zip(datasets, num_clients):

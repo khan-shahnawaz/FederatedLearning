@@ -140,21 +140,16 @@ class Model(object):
             bin_total[bin_index[i]] = bin_total[bin_index[i]] + 1
             if data['y'][i] == np.sign(y_pred[i]):
                 bin_correct[bin_index[i]] = bin_correct[bin_index[i]] + 1
-        for i in range(len(bin_correct)):
-            if bin_total[i] != 0:
-                bin_correct[i] = bin_correct[i]/bin_total[i]
         mce = 0
         #Calculate average confidence for each bin
         avg_conf = np.zeros(10)
         for i in range(len(bin_index)):
             avg_conf[bin_index[i]] = avg_conf[bin_index[i]] + pred_prob[i]
-        for i in range(len(bin_correct)):
-            if bin_total[i] != 0:
-                avg_conf[i] = avg_conf[i]/bin_total[i]
+        
         #Calculate MCE
         for i in range(len(bin_correct)):
             mce = max(mce, abs(bin_correct[i] - avg_conf[i]))
-        return tot_correct, loss,mce
+        return tot_correct, loss,avg_conf, bin_correct, bin_total
     
     def close(self):
         self.sess.close()
