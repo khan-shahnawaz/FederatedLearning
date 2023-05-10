@@ -102,6 +102,17 @@ class Client(object):
         tot_correct, loss = self.model.test(self.test_data)
         return tot_correct, loss, self.test_samples
     
+    def test_with_mce(self):
+        '''tests current model on local eval_data
+        
+        Return
+            tot_correct: total
+            test_samples: int
+            mce: float
+        '''
+        total_correct, loss, mce = self.model.test_with_mce(self.test_data)
+        return total_correct, loss, self.test_samples, mce
+    
     def test_on_positive_male(self):
         '''tests current model on positive examples only in local eval_data to get TPR
         

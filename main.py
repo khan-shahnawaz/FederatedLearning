@@ -9,7 +9,7 @@ from flearn.utils.model_utils import read_data
 
 # GLOBAL PARAMETERS
 OPTIMIZERS = ['fedsgd', 'fedavg', 'finetuning',
-              'l2sgd', 'ditto', 'ewc', 'apfl', 'mapper', 'kl', 'meta', 'fedavgper']
+              'l2sgd', 'ditto', 'ewc', 'apfl', 'mapper', 'kl', 'meta', 'fedavgper','ditto_mce']
 DATASETS = ['vehicle', 'femnist', 'fmnist', 'celeba', 'adult']   # fmnist: fashion mnist 
 
 
@@ -20,6 +20,7 @@ MODEL_PARAMS = {
     'celeba.cnn': (2,), # num_classes
     'adult.svm': (2,), # num_classes
     'adult.svm_fair': (2,), # num_classes
+    'adult.svm_mce': (2,), # num_classes
 }
 
 
@@ -177,7 +178,7 @@ def read_options():
     learner = getattr(mod, 'Model')
 
     # load selected trainer
-    if parsed['optimizer'] in ['l2sgd', 'ditto', 'apfl', 'mapper', 'ewc', 'meta', 'kl']:
+    if parsed['optimizer'] in ['l2sgd', 'ditto', 'apfl', 'mapper', 'ewc', 'meta', 'kl', 'ditto_mce']:
         opt_path = 'flearn.trainers_MTL.%s' % parsed['optimizer']
     else:
         opt_path = 'flearn.trainers_global.%s' % parsed['optimizer']
