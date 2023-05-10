@@ -516,3 +516,171 @@ At round 720 test accu: 0.8353253652058433
 At round 720 malicious test accu: nan
 At round 720 benign test accu: 0.8353253652058433
 variance of the performance:  0.013411474551755388
+At round 730, Maximum calibaration Error: 0.13464921478985103
+At round 730 training accu: 0.8387321375285965, loss: 0.39110339432930086
+At round 730 test accu: 0.8376494023904383
+At round 730 malicious test accu: nan
+At round 730 benign test accu: 0.8376494023904383
+variance of the performance:  0.012425279729692344
+At round 740, Maximum calibaration Error: 0.2787671331698476
+At round 740 training accu: 0.838201651138888, loss: 0.3908015660926038
+At round 740 test accu: 0.8373837981407702
+At round 740 malicious test accu: nan
+At round 740 benign test accu: 0.8373837981407702
+variance of the performance:  0.013300189733318401
+At round 750, Maximum calibaration Error: 0.2886308159128929
+At round 750 training accu: 0.8396273333112297, loss: 0.39054937577952437
+At round 750 test accu: 0.8387782204515273
+At round 750 malicious test accu: nan
+At round 750 benign test accu: 0.8387782204515273
+variance of the performance:  0.012898808048878252
+At round 760, Maximum calibaration Error: 0.2867828358964619
+At round 760 training accu: 0.8376048539504658, loss: 0.3931586811477276
+At round 760 test accu: 0.8357901726427622
+At round 760 malicious test accu: nan
+At round 760 benign test accu: 0.8357901726427622
+variance of the performance:  0.012902254748783301
+At round 770, Maximum calibaration Error: 0.276748375508755
+At round 770 training accu: 0.8378369417459633, loss: 0.39248795899169175
+At round 770 test accu: 0.8359229747675962
+At round 770 malicious test accu: nan
+At round 770 benign test accu: 0.8359229747675962
+variance of the performance:  0.012266681294305845
+At round 780, Maximum calibaration Error: 0.276748375508755
+At round 780 training accu: 0.8397599549086568, loss: 0.3910013660429112
+At round 780 test accu: 0.8381806108897742
+At round 780 malicious test accu: nan
+At round 780 benign test accu: 0.8381806108897742
+variance of the performance:  0.012218349746305807
+At round 790, Maximum calibaration Error: 0.27929509664438534
+At round 790 training accu: 0.8370412121614005, loss: 0.3919525941785251
+At round 790 test accu: 0.8343293492695883
+At round 790 malicious test accu: nan
+At round 790 benign test accu: 0.8343293492695883
+variance of the performance:  0.012640426778390276
+At round 800, Maximum calibaration Error: 0.2790333619679497
+At round 800 training accu: 0.8402904412983654, loss: 0.3906340384887671
+At round 800 test accu: 0.8383798140770252
+At round 800 malicious test accu: nan
+At round 800 benign test accu: 0.8383798140770252
+variance of the performance:  0.012958317066296821
+At round 810, Maximum calibaration Error: 0.2841464756489077
+At round 810 training accu: 0.8382348065382448, loss: 0.39214724843478566
+At round 810 test accu: 0.8361221779548472
+At round 810 malicious test accu: nan
+At round 810 benign test accu: 0.8361221779548472
+variance of the performance:  0.013044014669224191
+At round 820, Maximum calibaration Error: 0.28137100467301474
+At round 820 training accu: 0.8347203342064256, loss: 0.3959811081890758
+At round 820 test accu: 0.8316069057104913
+At round 820 malicious test accu: nan
+At round 820 benign test accu: 0.8316069057104913
+variance of the performance:  0.013153631463428553
+At round 830, Maximum calibaration Error: 0.2791340220254393
+At round 830 training accu: 0.8393620901163754, loss: 0.3919053552720746
+At round 830 test accu: 0.8351925630810093
+At round 830 malicious test accu: nan
+At round 830 benign test accu: 0.8351925630810093
+variance of the performance:  0.012945642841604859
+At round 840, Maximum calibaration Error: 0.2791340220254393
+At round 840 training accu: 0.8359470839826265, loss: 0.3941383279920788
+At round 840 test accu: 0.8329349269588313
+At round 840 malicious test accu: nan
+At round 840 benign test accu: 0.8329349269588313
+variance of the performance:  0.012596708175064517
+At round 850, Maximum calibaration Error: 0.2776164525298944
+At round 850 training accu: 0.8404230628957926, loss: 0.3923056222113549
+At round 850 test accu: 0.8407038512616202
+At round 850 malicious test accu: nan
+At round 850 benign test accu: 0.8407038512616202
+variance of the performance:  0.012791105804294933
+At round 860, Maximum calibaration Error: 0.1278676228929953
+At round 860 training accu: 0.8395610225125162, loss: 0.3916007339086571
+At round 860 test accu: 0.8386454183266933
+At round 860 malicious test accu: nan
+At round 860 benign test accu: 0.8386454183266933
+variance of the performance:  0.011979569674031134
+At round 870, Maximum calibaration Error: 0.2746577242443507
+At round 870 training accu: 0.8413845694771394, loss: 0.3936697833881314
+At round 870 test accu: 0.8405710491367862
+At round 870 malicious test accu: nan
+At round 870 benign test accu: 0.8405710491367862
+variance of the performance:  0.012400671556502357
+At round 880, Maximum calibaration Error: 0.048222534819948815
+At round 880 training accu: 0.838035874142104, loss: 0.392336537806259
+At round 880 test accu: 0.8362549800796812
+At round 880 malicious test accu: nan
+At round 880 benign test accu: 0.8362549800796812
+variance of the performance:  0.01244480258979628
+At round 890, Maximum calibaration Error: 0.03224398681669127
+At round 890 training accu: 0.8399257319054408, loss: 0.3913077609199459
+At round 890 test accu: 0.8385126162018592
+At round 890 malicious test accu: nan
+At round 890 benign test accu: 0.8385126162018592
+variance of the performance:  0.012072112527600825
+At round 900, Maximum calibaration Error: 0.2611444865618852
+At round 900 training accu: 0.8400915089022247, loss: 0.39061279446472064
+At round 900 test accu: 0.8383798140770252
+At round 900 malicious test accu: nan
+At round 900 benign test accu: 0.8383798140770252
+variance of the performance:  0.012013206262513478
+At round 910, Maximum calibaration Error: 0.07523864633493405
+At round 910 training accu: 0.8384005835350287, loss: 0.3917713633501837
+At round 910 test accu: 0.8376494023904383
+At round 910 malicious test accu: nan
+At round 910 benign test accu: 0.8376494023904383
+variance of the performance:  0.011996705413946738
+At round 920, Maximum calibaration Error: 0.036241050811550046
+At round 920 training accu: 0.8380690295414608, loss: 0.39178255095881287
+At round 920 test accu: 0.8357901726427622
+At round 920 malicious test accu: nan
+At round 920 benign test accu: 0.8357901726427622
+variance of the performance:  0.011901762347429814
+At round 930, Maximum calibaration Error: 0.36728169273081956
+At round 930 training accu: 0.8390636915221644, loss: 0.3936972855567588
+At round 930 test accu: 0.8387118193891102
+At round 930 malicious test accu: nan
+At round 930 benign test accu: 0.8387118193891102
+variance of the performance:  0.011904390454251703
+At round 940, Maximum calibaration Error: 0.12177271977218967
+At round 940 training accu: 0.8403899074964358, loss: 0.3916864580120341
+At round 940 test accu: 0.8383798140770252
+At round 940 malicious test accu: nan
+At round 940 benign test accu: 0.8383798140770252
+variance of the performance:  0.011954341625499899
+At round 950, Maximum calibaration Error: 0.03426192773135167
+At round 950 training accu: 0.8290507609164153, loss: 0.4019819812037125
+At round 950 test accu: 0.8260292164674635
+At round 950 malicious test accu: nan
+At round 950 benign test accu: 0.8260292164674635
+variance of the performance:  0.011814301655337412
+At round 960, Maximum calibaration Error: 0.11079085136741196
+At round 960 training accu: 0.840058353502868, loss: 0.39157347298385625
+At round 960 test accu: 0.8389774236387783
+At round 960 malicious test accu: nan
+At round 960 benign test accu: 0.8389774236387783
+variance of the performance:  0.011846147644323825
+At round 970, Maximum calibaration Error: 0.029423656922831776
+At round 970 training accu: 0.8356486853884155, loss: 0.3945243378421154
+At round 970 test accu: 0.8332669322709163
+At round 970 malicious test accu: nan
+At round 970 benign test accu: 0.8332669322709163
+variance of the performance:  0.011596265985180773
+At round 980, Maximum calibaration Error: 0.041300728126369035
+At round 980 training accu: 0.8379695633433905, loss: 0.3926213442365761
+At round 980 test accu: 0.8345949535192563
+At round 980 malicious test accu: nan
+At round 980 benign test accu: 0.8345949535192563
+variance of the performance:  0.012219926971145609
+At round 990, Maximum calibaration Error: 0.035821343977021414
+At round 990 training accu: 0.8357149961871291, loss: 0.39382362878822386
+At round 990 test accu: 0.8328021248339973
+At round 990 malicious test accu: nan
+At round 990 benign test accu: 0.8328021248339973
+variance of the performance:  0.01225316727326323
+At round 1000, Maximum calibaration Error: 0.03784037289474551
+At round 1000 training accu: 0.8381021849408176, loss: 0.3920841986018697
+At round 1000 test accu: 0.8355245683930943
+At round 1000 malicious test accu: nan
+At round 1000 benign test accu: 0.8355245683930943
+variance of the performance:  0.012321526181454743
